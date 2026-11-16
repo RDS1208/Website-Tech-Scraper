@@ -1,0 +1,57 @@
+[
+  {
+    "name": "Google reCAPTCHA",
+    "hostname": "www.google.com",
+    "paths": [
+      "/recaptcha/api.js",
+      "/recaptcha/enterprise.js"
+    ]
+  },
+  {
+    "name": "OneTrust Cookie Consent",
+    "hostname": "cdn.cookielaw.org",
+    "path_suffix": "/otSDKStub.js"
+  },
+  {
+    "name": "WordPress",
+    "path_prefix": "/wp-includes/"
+  },
+  {
+  "name": "Wix",
+  "hostname": "static.parastorage.com"
+},
+  {
+  "name": "Sentry",
+  "hostname": "browser.sentry-cdn.com"
+},
+  {
+  "name": "jQuery",
+  "paths": ["/wp-includes/js/jquery/jquery.min.js"]
+},
+{
+  "name": "Elementor",
+  "path_prefix": "/wp-content/plugins/elementor/"
+},
+{
+  "name": "Contact Form 7",
+  "path_prefix": "/wp-content/plugins/contact-form-7/"
+},
+{
+  "name": "Elementor Pro",
+  "path_prefix": "/wp-content/plugins/elementor-pro/"
+},
+  {
+  "name": "React",
+  "hostname": "static.parastorage.com",
+  "path_suffix": "/react.production.min.js"
+},
+  {
+  "name": "Lodash",
+  "hostname": "static.parastorage.com",
+  "path_suffix": "/lodash.min.js"
+},
+  {
+  "name": "WordPress",
+  "meta_generator_prefix": "WordPress"
+}
+]
