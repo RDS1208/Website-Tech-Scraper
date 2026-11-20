@@ -53,5 +53,127 @@
   {
   "name": "WordPress",
   "meta_generator_prefix": "WordPress"
-}
+},
+  {
+  "name": "Wix",
+  "meta_generator_prefix": "Wix.com Website Builder"
+},
+{
+  "name": "Divi",
+  "meta_generator_prefix": "Divi"
+},
+{
+  "name": "Elementor",
+  "meta_generator_prefix": "Elementor"
+},
+{
+  "name": "GoDaddy Website Builder",
+  "meta_generator_prefix": "Starfield Technologies; Go Daddy Website Builder"
+},
+{
+  "name": "LayerSlider",
+  "meta_generator_prefix": "Powered by LayerSlider"
+},
+{
+  "name": "All in One SEO",
+  "meta_generator_prefix": "All in One SEO (AIOSEO)"
+},
+{
+  "name": "Visual Composer",
+  "meta_generator_prefix": "Powered by Visual Composer Website Builder"
+},
+{
+  "name": "IONOS MyWebsite",
+  "meta_generator_prefix": "IONOS MyWebsite"
+},
+  {
+    "name": "Google Analytics",
+    "inline_contains": "gtag('config', 'G-"
+  },
+  {
+    "name": "Matomo",
+    "inline_contains": "_paq.push(['setTrackerUrl', u+'matomo.php'])"
+  },
+  {
+  "name": "WordPress",
+  "inline_contains": "wp.i18n.setLocaleData("
+},
+{
+  "name": "jQuery UI",
+  "inline_contains": "jQuery.uiBackCompat"
+},
+{
+  "name": "Elementor",
+  "inline_contains": ".e-con.e-parent:not(.e-lazyloaded)"
+},
+{
+  "name": "FormatJS Intl.Segmenter",
+  "inline_contains": "static.parastorage.com/unpkg/@formatjs/intl-segmenter@"
+},
+{
+  "name": "Wix",
+  "inline_contains": "document.getElementById('wix-viewer-model')"
+},
+{
+  "name": "Wix",
+  "inline_contains": "document.getElementById('wix-fedops')"
+},
+{
+  "name": "Wix",
+  "inline_contains": "self.webpackJsonp__wix_thunderbolt_app"
+},
+{
+  "name": "Rspack",
+  "inline_contains": "bundler=rspack@"
+},
+  {
+    "name": "nginx",
+    "header": "Server",
+    "header_product": "nginx"
+  },
+  {
+    "name": "Apache HTTP Server",
+    "header": "Server",
+    "header_product": "Apache"
+  },
+  {
+    "name": "Cloudflare",
+    "header": "Server",
+    "header_product": "cloudflare"
+  },
+  {
+    "name": "PHP",
+    "header": "X-Powered-By",
+    "header_product": "PHP"
+  },
+  {
+    "name": "Express",
+    "header": "X-Powered-By",
+    "header_product": "Express"
+  },
+  {
+    "name": "Drupal",
+    "header": "X-Generator",
+    "header_product": "Drupal"
+  },
+  {
+    "name": "WordPress",
+    "css_url": {"path_prefix": "/wp-content/"}
+  },
+  {
+    "name": "WordPress",
+    "css_url": {"path_prefix": "/wp-includes/"}
+  },
+  {
+    "name": "Elementor",
+    "css_url": {"path_prefix": "/wp-content/plugins/elementor/"}
+  },
+  {
+    "name": "Elementor Pro",
+    "css_url": {"path_prefix": "/wp-content/plugins/elementor-pro/"}
+  },
+  {
+    "name": "Contact Form 7",
+    "css_url": {"path_prefix": "/wp-content/plugins/contact-form-7/"}
+  }
 ]
