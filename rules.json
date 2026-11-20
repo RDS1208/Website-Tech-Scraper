@@ -175,5 +175,376 @@
   {
     "name": "Contact Form 7",
     "css_url": {"path_prefix": "/wp-content/plugins/contact-form-7/"}
+  },
+  {
+    "name": "LiteSpeed",
+    "header": "Server",
+    "header_product": "LiteSpeed"
+  },
+  {
+    "name": "Squarespace",
+    "header": "Server",
+    "header_product": "Squarespace"
+  },
+  {
+    "name": "Microsoft IIS",
+    "header": "Server",
+    "header_product": "Microsoft-IIS"
+  },
+  {
+    "name": "ASP.NET",
+    "header": "X-Powered-By",
+    "header_product": "ASP.NET"
+  },
+  {
+    "name": "Nuxt",
+    "header": "X-Powered-By",
+    "header_product": "Nuxt"
+  },
+  {
+    "name": "Vercel",
+    "header": "Server",
+    "header_product": "Vercel"
+  },
+  {
+    "name": "OpenResty",
+    "header": "Server",
+    "header_product": "openresty"
+  },
+  {
+    "name": "RunCloud",
+    "header": "Server",
+    "header_product": "nginx-rc"
+  },
+  {
+    "name": "ArvanCloud",
+    "header": "Server",
+    "header_product": "ArvanCloud"
+  },
+  {
+    "name": "GoCache",
+    "header": "Server",
+    "header_product": "gocache"
+  },
+  {
+    "name": "Flywheel",
+    "header": "Server",
+    "header_product": "Flywheel"
+  },
+  {
+    "name": "Simply.com",
+    "header": "Server",
+    "header_product": "Simply.com"
+  },
+  {
+    "name": "Akamai NetStorage",
+    "header": "Server",
+    "header_product": "AkamaiNetStorage"
+  },
+  {
+    "name": "Webnode",
+    "header": "Server",
+    "header_product": "webnode"
+  },
+  {
+    "name": "Plesk",
+    "header": "X-Powered-By",
+    "header_product": "PleskLin"
+  },
+  {
+    "name": "Seravo",
+    "header": "X-Powered-By",
+    "header_product": "Seravo"
+  },
+  {
+    "name": "W3 Total Cache",
+    "header": "X-Powered-By",
+    "header_product": "W3 Total Cache"
+  },
+  {
+    "name": "Elementor Cloud",
+    "header": "X-Powered-By",
+    "header_product": "Elementor Cloud"
+  },
+  {
+    "name": "nginx",
+    "header": "X-Powered-By",
+    "header_product": "nginx"
+  },
+  {
+    "name": "WPBakery Page Builder",
+    "meta_generator_prefix": "Powered by WPBakery Page Builder"
+  },
+  {
+    "name": "Webflow",
+    "meta_generator_prefix": "Webflow"
+  },
+  {
+    "name": "Webnode",
+    "meta_generator_prefix": "Webnode"
+  },
+  {
+    "name": "HubSpot",
+    "meta_generator_prefix": "HubSpot"
+  },
+  {
+    "name": "Square Online",
+    "meta_generator_prefix": "Square Online"
+  },
+  {
+    "name": "Google Tag Manager",
+    "inline_contains": "//www.googletagmanager.com/gtm.js"
+  },
+  {
+    "name": "Wix",
+    "inline_contains": "wix-motion-played-animations"
+  },
+  {
+    "name": "Meta Pixel",
+    "inline_contains": "connect.facebook.net/en_US/fbevents.js"
+  },
+  {
+    "name": "jQuery Migrate",
+    "paths": [
+      "/wp-includes/js/jquery/jquery-migrate.min.js",
+      "/wp-includes/js/jquery/jquery-migrate.js"
+    ]
+  },
+  {
+    "name": "jQuery UI",
+    "path_prefix": "/wp-includes/js/jquery/ui/"
+  },
+  {
+    "name": "imagesLoaded",
+    "paths": [
+      "/wp-includes/js/imagesloaded.min.js",
+      "/wp-includes/js/imagesloaded.js"
+    ]
+  },
+  {
+    "name": "SmartMenus",
+    "paths": [
+      "/wp-content/plugins/elementor-pro/assets/lib/smartmenus/jquery.smartmenus.min.js"
+    ]
+  },
+  {
+    "name": "webpack",
+    "paths": [
+      "/wp-content/plugins/elementor/assets/js/webpack.runtime.min.js"
+    ]
+  },
+  {
+    "name": "WordPress Hooks",
+    "paths": [
+      "/wp-includes/js/dist/hooks.min.js",
+      "/wp-includes/js/dist/hooks.js"
+    ]
+  },
+  {
+    "name": "WordPress i18n",
+    "paths": [
+      "/wp-includes/js/dist/i18n.min.js",
+      "/wp-includes/js/dist/i18n.js"
+    ]
+  },
+  {
+    "name": "Google tag",
+    "hostname": "www.googletagmanager.com",
+    "paths": [
+      "/gtag/js"
+    ]
+  },
+  {
+    "name": "Google Tag Manager",
+    "hostname": "www.googletagmanager.com",
+    "paths": [
+      "/gtm.js"
+    ]
+  },
+  {
+    "name": "WPBakery Page Builder",
+    "path_prefix": "/wp-content/plugins/js_composer/"
+  },
+  {
+    "name": "WooCommerce",
+    "path_prefix": "/wp-content/plugins/woocommerce/"
+  },
+  {
+    "name": "WooCommerce",
+    "hostname": "c0.wp.com",
+    "path_prefix": "/p/woocommerce/"
+  },
+  {
+    "name": "Jetpack Site Accelerator",
+    "hostname": "c0.wp.com",
+    "path_prefix": "/c/"
+  },
+  {
+    "name": "Squarespace",
+    "hostname": "assets.squarespace.com",
+    "path_prefix": "/universal/scripts-compressed/"
+  },
+  {
+    "name": "Swiper",
+    "hostname": "cdn.jsdelivr.net",
+    "path_prefix": "/npm/swiper@",
+    "path_suffix": "/swiper-bundle.min.js"
+  },
+  {
+    "name": "Swiper",
+    "path_prefix": "/wp-content/plugins/elementor/assets/lib/swiper/",
+    "path_suffix": "/swiper.min.js"
+  },
+  {
+    "name": "Google Fonts",
+    "css_url": {
+      "hostname": "fonts.googleapis.com",
+      "paths": [
+        "/css",
+        "/css2"
+      ]
+    }
+  },
+  {
+    "name": "Adobe Fonts",
+    "css_url": {
+      "hostname": "use.typekit.net",
+      "path_suffix": ".css"
+    }
+  },
+  {
+    "name": "Font Awesome",
+    "css_url": {
+      "path_prefix": "/wp-content/plugins/elementor/assets/lib/font-awesome/css/"
+    }
+  },
+  {
+    "name": "Font Awesome",
+    "css_url": {
+      "hostname": "use.fontawesome.com",
+      "path_prefix": "/releases/"
+    }
+  },
+  {
+    "name": "Font Awesome",
+    "css_url": {
+      "hostname": "maxcdn.bootstrapcdn.com",
+      "path_prefix": "/font-awesome/",
+      "path_suffix": "/font-awesome.min.css"
+    }
+  },
+  {
+    "name": "Font Awesome",
+    "css_url": {
+      "hostname": "stackpath.bootstrapcdn.com",
+      "path_prefix": "/font-awesome/",
+      "path_suffix": "/font-awesome.min.css"
+    }
+  },
+  {
+    "name": "Elementor Icons",
+    "css_url": {
+      "path_prefix": "/wp-content/plugins/elementor/assets/lib/eicons/css/"
+    }
+  },
+  {
+    "name": "Elementor",
+    "css_url": {
+      "path_prefix": "/wp-content/uploads/elementor/google-fonts/css/"
+    }
+  },
+  {
+    "name": "Swiper",
+    "css_url": {
+      "path_prefix": "/wp-content/plugins/elementor/assets/lib/swiper/",
+      "path_suffix": "/swiper.min.css"
+    }
+  },
+  {
+    "name": "Swiper",
+    "css_url": {
+      "hostname": "cdn.jsdelivr.net",
+      "path_prefix": "/npm/swiper@",
+      "path_suffix": "/swiper-bundle.min.css"
+    }
+  },
+  {
+    "name": "Bootstrap",
+    "css_url": {
+      "hostname": "cdn.jsdelivr.net",
+      "path_prefix": "/npm/bootstrap@",
+      "path_suffix": "/bootstrap.min.css"
+    }
+  },
+  {
+    "name": "Slick",
+    "css_url": {
+      "hostname": "cdn.jsdelivr.net",
+      "path_prefix": "/npm/slick-carousel@"
+    }
+  },
+  {
+    "name": "Fancyapps Fancybox",
+    "css_url": {
+      "hostname": "cdn.jsdelivr.net",
+      "path_prefix": "/gh/fancyapps/fancybox@",
+      "path_suffix": "/jquery.fancybox.min.css"
+    }
+  },
+  {
+    "name": "iziToast",
+    "css_url": {
+      "hostname": "cdn.jsdelivr.net",
+      "path_prefix": "/npm/izitoast/",
+      "path_suffix": "/iziToast.min.css"
+    }
+  },
+  {
+    "name": "Squarespace",
+    "css_url": {
+      "hostname": "assets.squarespace.com",
+      "path_prefix": "/universal/styles-compressed/"
+    }
+  },
+  {
+    "name": "Squarespace",
+    "css_url": {
+      "hostname": "definitions.sqspcdn.com",
+      "path_prefix": "/website-component-definition/static-assets/",
+      "path_suffix": ".styles.css"
+    }
+  },
+  {
+    "name": "Webflow",
+    "css_url": {
+      "hostname": "cdn.prod.website-files.com",
+      "path_suffix": ".css"
+    }
+  },
+  {
+    "name": "WPBakery Page Builder",
+    "css_url": {
+      "path_prefix": "/wp-content/plugins/js_composer/"
+    }
+  },
+  {
+    "name": "WooCommerce",
+    "css_url": {
+      "path_prefix": "/wp-content/plugins/woocommerce/"
+    }
+  },
+  {
+    "name": "WooCommerce",
+    "css_url": {
+      "hostname": "c0.wp.com",
+      "path_prefix": "/p/woocommerce/"
+    }
+  },
+  {
+    "name": "Jetpack Site Accelerator",
+    "css_url": {
+      "hostname": "c0.wp.com",
+      "path_prefix": "/c/"
+    }
   }
 ]
