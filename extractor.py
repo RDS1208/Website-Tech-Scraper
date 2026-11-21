@@ -3,38 +3,55 @@ from urllib.parse import urljoin, urlsplit
 from bs4 import BeautifulSoup
 
 
+def _resolve_asset_url(page_url, value):
+    value = value.strip()
+    if not value:
+        return None
+
+    try:
+        url = urljoin(page_url, value)
+        parts = urlsplit(url)
+        if parts.scheme in ("http", "https") and parts.hostname:
+            return url
+    except ValueError:
+        return None
+
+    return None
+
+
+def _document_base_url(soup, page_url):
+    base = soup.find("base", href=True)
+    if base is None:
+        return page_url
+
+    return _resolve_asset_url(page_url, base["href"]) or page_url
+
+
 def extract_script_urls(html, page_url):
     soup = BeautifulSoup(html, "html.parser")
+    base_url = _document_base_url(soup, page_url)
 
-    return [
-        urljoin(page_url, script["src"].strip())
-        for script in soup.find_all("script", src=True)
-        if script["src"].strip()
-    ]
+    script_urls = []
+    for script in soup.find_all("script", src=True):
+        url = _resolve_asset_url(base_url, script["src"])
+        if url:
+            script_urls.append(url)
+
+    return script_urls
 
 
 def extract_css_urls(html, page_url):
     soup = BeautifulSoup(html, "html.parser")
-    base = soup.find("base", href=True)
-    if base:
-        try:
-            page_url = urljoin(page_url, base["href"].strip())
-        except ValueError:
-            pass
+    base_url = _document_base_url(soup, page_url)
 
     css_urls = []
     for link in soup.find_all("link", href=True):
-        href = link["href"].strip()
-        if not href or "stylesheet" not in [rel.lower() for rel in link.get("rel", [])]:
+        if "stylesheet" not in [rel.lower() for rel in link.get("rel", [])]:
             continue
 
-        try:
-            url = urljoin(page_url, href)
-            parts = urlsplit(url)
-            if parts.scheme in ("http", "https") and parts.hostname:
-                css_urls.append(url)
-        except ValueError:
-            continue
+        url = _resolve_asset_url(base_url, link["href"])
+        if url:
+            css_urls.append(url)
 
     return css_urls
 
