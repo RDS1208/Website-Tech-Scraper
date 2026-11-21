@@ -471,8 +471,6 @@
   {
     "name": "Bootstrap",
     "css_url": {
-      "hostname": "cdn.jsdelivr.net",
-      "path_prefix": "/npm/bootstrap@",
       "path_suffix": "/bootstrap.min.css"
     }
   },
@@ -546,5 +544,129 @@
       "hostname": "c0.wp.com",
       "path_prefix": "/c/"
     }
+  },
+  {
+    "name": "Bootstrap",
+    "path_suffix": "/bootstrap.min.js"
+  },
+  {
+    "name": "Bootstrap",
+    "path_suffix": "/bootstrap.bundle.min.js"
+  },
+  {
+    "name": "Google Maps",
+    "hostname": "maps.googleapis.com",
+    "paths": ["/maps/api/js"]
+  },
+  {
+    "name": "Google Analytics",
+    "hostname": "www.googletagmanager.com",
+    "paths": ["/gtag/js"],
+    "query_param_prefix": {"id": "G-"}
+  },
+  {
+    "name": "Google Ads",
+    "hostname": "www.googletagmanager.com",
+    "paths": ["/gtag/js"],
+    "query_param_prefix": {"id": "AW-"}
+  },
+  {
+    "name": "Shopify",
+    "inline_contains": "Shopify.shop ="
+  },
+  {
+    "name": "Shopify",
+    "path_prefix": "/cdn/shop/t/"
+  },
+  {
+    "name": "Shopify",
+    "css_url": {"path_prefix": "/cdn/shop/t/"}
+  },
+  {
+    "name": "WooCommerce",
+    "inline_contains": "var wc_add_to_cart_params"
+  },
+  {
+    "name": "Magento",
+    "inline_contains": "Magento_Customer/js/customer-data"
+  },
+  {
+    "name": "Ecwid",
+    "hostname": "app.ecwid.com",
+    "paths": ["/script.js"]
+  },
+  {
+    "name": "Ecwid",
+    "inline_contains": "//app.ecwid.com/script.js?"
+  },
+  {
+    "name": "PrestaShop",
+    "inline_contains": "prestashop.on("
+  },
+  {
+    "name": "OpenCart",
+    "path_suffix": "/catalog/view/javascript/common.js"
+  },
+  {
+    "name": "Slider Revolution",
+    "path_prefix": "/wp-content/plugins/revslider/"
+  },
+  {
+    "name": "Slider Revolution",
+    "css_url": {"path_prefix": "/wp-content/plugins/revslider/"}
+  },
+  {
+    "name": "Gravity Forms",
+    "path_prefix": "/wp-content/plugins/gravityforms/"
+  },
+  {
+    "name": "Gravity Forms",
+    "css_url": {"path_prefix": "/wp-content/plugins/gravityforms/"}
+  },
+  {
+    "name": "MonsterInsights",
+    "path_prefix": "/wp-content/plugins/google-analytics-for-wordpress/"
+  },
+  {
+    "name": "MonsterInsights",
+    "css_url": {"path_prefix": "/wp-content/plugins/google-analytics-for-wordpress/"}
+  },
+  {
+    "name": "Site Kit by Google",
+    "path_prefix": "/wp-content/plugins/google-site-kit/"
+  },
+  {
+    "name": "Site Kit by Google",
+    "css_url": {"path_prefix": "/wp-content/plugins/google-site-kit/"}
+  },
+  {
+    "name": "Microsoft Clarity",
+    "hostname": "www.clarity.ms",
+    "path_prefix": "/tag/"
+  },
+  {
+    "name": "CookieYes",
+    "hostname": "cdn-cookieyes.com",
+    "path_prefix": "/client_data/"
+  },
+  {
+    "name": "Cloudflare Web Analytics",
+    "hostname": "static.cloudflareinsights.com",
+    "paths": ["/beacon.min.js"]
+  },
+  {
+    "name": "Cloudflare Web Analytics",
+    "hostname": "static.cloudflareinsights.com",
+    "path_prefix": "/beacon.min.js/"
+  },
+  {
+    "name": "Cloudflare Turnstile",
+    "hostname": "challenges.cloudflare.com",
+    "paths": ["/turnstile/v0/api.js"]
+  },
+  {
+    "name": "Meta Pixel",
+    "hostname": "connect.facebook.net",
+    "path_suffix": "/fbevents.js"
   }
 ]

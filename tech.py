@@ -1,8 +1,8 @@
 import json
-from urllib.parse import urlsplit
+from urllib.parse import parse_qs, urlsplit
 
 
-URL_FIELDS = {"hostname", "paths", "path_prefix", "path_suffix"}
+URL_FIELDS = {"hostname", "paths", "path_prefix", "path_suffix", "query_param_prefix"}
 TEXT_RULE_FIELDS = ({"header", "header_product"}, {"inline_contains"}, {"meta_generator_prefix"})
 
 
@@ -20,6 +20,12 @@ def _valid_url_fields(fields):
                 return False
             if not all(_is_nonempty_string(path) for path in value):
                 return False
+        elif key == "query_param_prefix":
+            if not isinstance(value, dict) or not value:
+                return False
+            for param, prefix in value.items():
+                if not _is_nonempty_string(param) or not _is_nonempty_string(prefix):
+                    return False
         elif not _is_nonempty_string(value):
             return False
 
@@ -68,6 +74,12 @@ def matches_url_rule(url, rule):
 
     if "path_suffix" in rule and not url.path.endswith(rule["path_suffix"]):
         return False
+
+    if "query_param_prefix" in rule:
+        params = parse_qs(url.query)
+        for name, prefix in rule["query_param_prefix"].items():
+            if not any(value.startswith(prefix) for value in params.get(name, [])):
+                return False
 
     return True
 
