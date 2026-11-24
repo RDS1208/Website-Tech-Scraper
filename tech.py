@@ -4,6 +4,7 @@ from urllib.parse import parse_qs, urlsplit
 
 URL_FIELDS = {"hostname", "paths", "path_prefix", "path_suffix", "query_param_prefix"}
 TEXT_RULE_FIELDS = ({"header", "header_product"}, {"inline_contains"}, {"meta_generator_prefix"})
+LIST_SIGNAL_FIELDS = ("script_urls", "css_urls", "inline_scripts", "network_urls")
 
 
 def _is_nonempty_string(value):
@@ -42,6 +43,9 @@ def validate_rules(rules):
         fields = {key: value for key, value in rule.items() if key != "name"}
         if fields.keys() == {"css_url"}:
             valid = _valid_url_fields(fields["css_url"])
+        elif fields.keys() == {"network_url"}:
+            network_rule = fields["network_url"]
+            valid = _valid_url_fields(network_rule) and "query_param_prefix" not in network_rule
         elif fields.keys() in TEXT_RULE_FIELDS:
             valid = all(_is_nonempty_string(value) for value in fields.values())
         else:
@@ -84,10 +88,14 @@ def matches_url_rule(url, rule):
     return True
 
 
-def detect_tech(script_urls, meta_generator=None, inline_scripts=None, headers=None, css_urls=None):
+def detect_tech(
+    script_urls, meta_generator=None, inline_scripts=None, headers=None, css_urls=None,
+    *, rendered_meta_generator=None, network_urls=None,
+):
     evidence_by_name = {}
     script_entries = [(script_url, urlsplit(script_url)) for script_url in script_urls]
     css_entries = [(css_url, urlsplit(css_url)) for css_url in (css_urls or [])]
+    network_entries = [(network_url, urlsplit(network_url)) for network_url in (network_urls or [])]
     headers = {key.lower(): value for key, value in (headers or {}).items()}
     if inline_scripts is None:
         inline_scripts = []
@@ -118,6 +126,12 @@ def detect_tech(script_urls, meta_generator=None, inline_scripts=None, headers=N
                     add_evidence(name, "css href", css_url)
             continue
 
+        if "network_url" in rule:
+            for network_url, url in network_entries:
+                if matches_url_rule(url, rule["network_url"]):
+                    add_evidence(name, "network request", network_url)
+            continue
+
         if "inline_contains" in rule:
             marker = rule["inline_contains"]
             if not marker:
@@ -135,11 +149,12 @@ def detect_tech(script_urls, meta_generator=None, inline_scripts=None, headers=N
         if "meta_generator_prefix" in rule:
             prefix = rule["meta_generator_prefix"].casefold()
 
-            if isinstance(meta_generator, str):
-                generator = meta_generator.strip().casefold()
-
+            for value in (meta_generator, rendered_meta_generator):
+                if not isinstance(value, str):
+                    continue
+                generator = value.strip().casefold()
                 if generator == prefix or generator.startswith(prefix + " "):
-                    add_evidence(name, "meta generator", meta_generator)
+                    add_evidence(name, "meta generator", value)
 
             continue
 
@@ -151,3 +166,40 @@ def detect_tech(script_urls, meta_generator=None, inline_scripts=None, headers=N
         {"name": name, "evidence": evidence}
         for name, evidence in evidence_by_name.items()
     ]
+
+
+def detect_result(result, *, httpx_only=False):
+    added_signals = result.get("render_added_signals", {})
+    signals = {field: result.get(field, []) for field in LIST_SIGNAL_FIELDS}
+    generator = result.get("meta_generator")
+    rendered_generator = added_signals.get("meta_generator")
+
+    if httpx_only:
+        for field in LIST_SIGNAL_FIELDS:
+            added = set(added_signals.get(field, []))
+            signals[field] = [value for value in signals[field] if value not in added]
+        # The merged field falls back to the browser if HTTPX had no generator.
+        if generator == rendered_generator:
+            generator = None
+        rendered_generator = None
+
+    return detect_tech(
+        **signals,
+        headers=result.get("headers"),
+        meta_generator=generator,
+        rendered_meta_generator=rendered_generator,
+    )
+
+
+def added_technology_names(before, after):
+    return sorted({tech["name"] for tech in after} - {tech["name"] for tech in before})
+
+
+def linked_technology_additions(result):
+    findings = [
+        technology
+        for page in result.get("linked_pages", [])
+        if "error" not in page
+        for technology in page["technologies"]
+    ]
+    return added_technology_names(result["technologies"], findings)

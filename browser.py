@@ -1,5 +1,6 @@
 import asyncio
 from contextlib import asynccontextmanager
+from urllib.parse import urlsplit
 
 from playwright.async_api import Error, async_playwright
 
@@ -13,14 +14,26 @@ from extractor import (
 
 async def render_page(browser, url):
     resource_urls = {"script": set(), "stylesheet": set()}
+    network_urls = set()
 
     def collect_resource(response):
         resource_type = response.request.resource_type
         if resource_type in resource_urls and (response.ok or response.status == 304):
             resource_urls[resource_type].add(response.url)
 
+    def collect_network_request(request):
+        if request.resource_type not in ("fetch", "xhr"):
+            return
+        endpoint = urlsplit(request.url)
+        hostname = endpoint.hostname
+        if endpoint.scheme in ("http", "https") and hostname:
+            if ":" in hostname:
+                hostname = f"[{hostname}]"
+            network_urls.add(f"{endpoint.scheme}://{hostname}{endpoint.path or '/'}")
+
     context = await browser.new_context()
     try:
+        context.on("request", collect_network_request)
         page = await context.new_page()
         page.on("response", collect_resource)
         response = await page.goto(
@@ -40,6 +53,7 @@ async def render_page(browser, url):
             "status_code": response.status if response is not None else None,
             "script_urls": sorted(resource_urls["script"]),
             "css_urls": sorted(resource_urls["stylesheet"]),
+            "network_urls": sorted(network_urls),
             "inline_scripts": extract_inline_scripts(html),
             "meta_generator": extract_meta_generator(html),
         }
@@ -51,7 +65,7 @@ async def render_page(browser, url):
 async def open_renderer():
     semaphore = asyncio.Semaphore(2)
     async with async_playwright() as playwright:
-        browser = await playwright.chromium.launch(headless=True)
+        browser = await playwright.chromium.launch(headless=False)
         try:
             async def render(url):
                 async with semaphore:
@@ -87,4 +101,4 @@ async def inspect_page(url):
 
 
 if __name__ == "__main__":
-    asyncio.run(inspect_page("https://fmi.unibuc.ro"))
+    asyncio.run(inspect_page("https://youtube.com"))

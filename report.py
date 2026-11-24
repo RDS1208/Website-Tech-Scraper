@@ -3,7 +3,6 @@ from collections import Counter
 
 
 def generate_report(results_path="results.json"):
-    """Print website counts and rank technologies by the number of websites."""
     with open(results_path, encoding="utf-8") as file:
         results = json.load(file)
 
@@ -13,7 +12,9 @@ def generate_report(results_path="results.json"):
             continue
 
         technologies = technologies_by_domain.setdefault(result["domain"], set())
-        technologies.update(technology["name"] for technology in result["technologies"])
+        for page in [result] + result.get("linked_pages", []):
+            if "error" not in page:
+                technologies.update(technology["name"] for technology in page["technologies"])
 
     counts = Counter()
     sites_with_technologies = 0

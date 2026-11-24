@@ -668,5 +668,1949 @@
     "name": "Meta Pixel",
     "hostname": "connect.facebook.net",
     "path_suffix": "/fbevents.js"
+  },
+  {
+    "name": "Google reCAPTCHA",
+    "hostname": "www.gstatic.com",
+    "path_prefix": "/recaptcha/releases/"
+  },
+  {
+    "name": "Google reCAPTCHA",
+    "hostname": "www.google.com",
+    "paths": ["/recaptcha/api2/webworker.js", "/recaptcha/enterprise/webworker.js"]
+  },
+  {
+    "name": "Google reCAPTCHA",
+    "css_url": {"hostname": "www.gstatic.com", "path_prefix": "/recaptcha/releases/", "path_suffix": ".css"}
+  },
+  {
+    "name": "Google Maps",
+    "hostname": "maps.googleapis.com",
+    "path_prefix": "/maps-api-v3/api/js/"
+  },
+  {
+    "name": "Google Maps",
+    "hostname": "maps.gstatic.com",
+    "path_prefix": "/maps-api-v3/embed/js/"
+  },
+  {
+    "name": "Google Analytics",
+    "hostname": "www.google-analytics.com",
+    "paths": ["/analytics.js", "/ga.js"]
+  },
+  {
+    "name": "Google Analytics",
+    "inline_contains": "//www.google-analytics.com/analytics.js"
+  },
+  {
+    "name": "Google tag",
+    "inline_contains": "function gtag(){dataLayer.push(arguments);}"
+  },
+  {
+    "name": "YouTube Player",
+    "hostname": "www.youtube.com",
+    "paths": ["/iframe_api"]
+  },
+  {
+    "name": "YouTube Player",
+    "hostname": "www.youtube.com",
+    "path_prefix": "/s/_/ytembeds/_/js/"
+  },
+  {
+    "name": "YouTube Player",
+    "hostname": "www.youtube.com",
+    "path_prefix": "/s/player/",
+    "path_suffix": "/www-widgetapi.js"
+  },
+  {
+    "name": "YouTube Player",
+    "css_url": {"hostname": "www.youtube.com", "path_prefix": "/s/_/ytembeds/_/ss/"}
+  },
+  {
+    "name": "YouTube Player",
+    "css_url": {"hostname": "www.youtube.com", "path_prefix": "/s/player/", "path_suffix": "/www-player.css"}
+  },
+  {
+    "name": "Vimeo Player",
+    "hostname": "f.vimeocdn.com",
+    "path_prefix": "/p/",
+    "path_suffix": "/player.module.js"
+  },
+  {
+    "name": "Vimeo Player",
+    "css_url": {"hostname": "f.vimeocdn.com", "path_prefix": "/p/", "path_suffix": "/player.css"}
+  },
+  {
+    "name": "Adobe Fonts",
+    "hostname": "use.typekit.net",
+    "path_suffix": ".js"
+  },
+  {
+    "name": "Adobe Fonts",
+    "css_url": {"hostname": "p.typekit.net", "paths":["/p.css"]}
+  },
+  {
+    "name": "Weebly",
+    "hostname": "cdn2.editmysite.com",
+    "paths": ["/js/wsnbn/snowday262.js"]
+  },
+  {
+    "name": "Weebly",
+    "css_url": {"hostname": "cdn11.editmysite.com", "paths":["/css/free-footer-v3.css"]}
+  },
+  {
+    "name": "Wix",
+    "path_prefix": "/_partials/wix-thunderbolt/dist/"
+  },
+  {
+    "name": "Wix Chat",
+    "css_url": {"hostname": "static.parastorage.com", "path_prefix": "/services/chat-widget/"}
+  },
+  {
+    "name": "Squarespace",
+    "hostname": "static1.squarespace.com",
+    "path_prefix": "/static/vta/"
+  },
+  {
+    "name": "Squarespace",
+    "css_url": {"hostname": "assets.squarespace.com", "path_prefix": "/universal/", "path_suffix": ".css"}
+  },
+  {
+    "name": "Facebook JavaScript SDK",
+    "hostname": "connect.facebook.net",
+    "path_suffix": "/sdk.js"
+  },
+  {
+    "name": "WeatherWidget.io",
+    "hostname": "weatherwidget.io",
+    "paths": ["/js/widget.min.js"]
+  },
+  {
+    "name": "WeatherWidget.io",
+    "css_url": {"hostname": "weatherwidget.io", "paths":["/w/css/if_w.css"]}
+  },
+  {
+    "name": "WP Show Posts",
+    "path_prefix": "/wp-content/plugins/wp-show-posts/"
+  },
+  {
+    "name": "WP Show Posts",
+    "css_url": {"path_prefix": "/wp-content/plugins/wp-show-posts/"}
+  },
+  {
+    "name": "jQuery Match Height",
+    "path_suffix": "/jquery.matchHeight.js"
+  },
+  {
+    "name": "JetMenu",
+    "path_prefix": "/wp-content/plugins/jet-menu/"
+  },
+  {
+    "name": "PRO Elements",
+    "path_prefix": "/wp-content/plugins/pro-elements/"
+  },
+  {
+    "name": "Owl Carousel",
+    "inline_contains": ".owlCarousel("
+  },
+  {
+    "name": "Slider Revolution",
+    "inline_contains": "window.RS_MODULES = window.RS_MODULES || {};"
+  },
+  {
+    "name": "WooCommerce",
+    "inline_contains": "var wcSettings = wcSettings ||"
+  },
+  {
+    "name": "Microsoft Clarity",
+    "hostname": "scripts.clarity.ms",
+    "path_suffix": "/clarity.js"
+  },
+  {
+    "name": "Cloudflare Turnstile",
+    "hostname": "challenges.cloudflare.com",
+    "path_prefix": "/turnstile/v0/b/",
+    "path_suffix": "/api.js"
+  },
+  {
+    "name": "Adobe Experience Platform Tags",
+    "hostname": "assets.adobedtm.com",
+    "path_suffix": ".js"
+  },
+  {
+    "name": "Adobe Analytics",
+    "hostname": "assets.adobedtm.com",
+    "path_prefix": "/extensions/",
+    "path_suffix": "/AppMeasurement.min.js"
+  },
+  {
+    "name": "Google AdSense",
+    "hostname": "pagead2.googlesyndication.com",
+    "paths": ["/pagead/js/adsbygoogle.js"]
+  },
+  {
+    "name": "Google AdSense",
+    "hostname": "pagead2.googlesyndication.com",
+    "path_prefix": "/pagead/managed/js/adsense/"
+  },
+  {
+    "name": "Yandex Metrica",
+    "hostname": "mc.yandex.ru",
+    "paths": ["/metrika/tag.js"]
+  },
+  {
+    "name": "LinkedIn Insight Tag",
+    "hostname": "snap.licdn.com",
+    "paths": ["/li.lms-analytics/insight.min.js"]
+  },
+  {
+    "name": "AMP",
+    "hostname": "cdn.ampproject.org",
+    "path_prefix": "/rtv/",
+    "path_suffix": "/amp-lightbox-gallery-0.1.js"
+  },
+  {
+    "name": "HubSpot",
+    "hostname": "js-na2.hs-analytics.net",
+    "path_prefix": "/analytics/"
+  },
+  {
+    "name": "ShareThis",
+    "hostname": "platform-api.sharethis.com",
+    "paths": ["/js/sharethis.js"]
+  },
+  {
+    "name": "JivoChat",
+    "hostname": "code.jivosite.com",
+    "path_prefix": "/script/widget/"
+  },
+  {
+    "name": "UserWay",
+    "hostname": "cdn.userway.org",
+    "path_prefix": "/widgetapp/"
+  },
+  {
+    "name": "iubenda",
+    "hostname": "cdn.iubenda.com",
+    "paths": ["/iubenda.js"]
+  },
+  {
+    "name": "iubenda",
+    "hostname": "cdn.iubenda.com",
+    "path_prefix": "/cookie_solution/"
+  },
+  {
+    "name": "Triple Whale",
+    "inline_contains": "TriplePixel('pageLoad')"
+  },
+  {
+    "name": "Triple Whale",
+    "inline_contains": "window.TriplePixelData"
+  },
+  {
+    "name": "Northbeam",
+    "hostname": "j.northbeam.io",
+    "path_prefix": "/ota-sp/",
+    "path_suffix": ".js"
+  },
+  {
+    "name": "Northbeam",
+    "hostname": "j.northbeam.io",
+    "paths": ["/vendor/nb-sp.min.js"]
+  },
+  {
+    "name": "Elevar",
+    "inline_contains": "window.ElevarDataLayer.push"
+  },
+  {
+    "name": "Elevar",
+    "inline_contains": "https://shopify-gtm-suite.getelevar.com/configs/"
+  },
+  {
+    "name": "Elevar",
+    "hostname": "shopify-gtm-suite.getelevar.com",
+    "path_prefix": "/configs/",
+    "path_suffix": "/config.js"
+  },
+  {
+    "name": "Elevar",
+    "hostname": "shopify-gtm-suite.getelevar.com",
+    "path_prefix": "/getelevar/",
+    "path_suffix": "/dl-web-pixel.js"
+  },
+  {
+    "name": "Littledata",
+    "inline_contains": "LittledataLayer"
+  },
+  {
+    "name": "Littledata",
+    "network_url": {
+      "hostname": "transaction-watcher-2.littledata.io",
+      "paths": ["/clientID/shopify"]
+    }
+  },
+  {
+    "name": "Google Analytics",
+    "network_url": {
+      "hostname": "region1.google-analytics.com",
+      "paths": ["/g/collect"]
+    }
+  },
+  {
+    "name": "Google Analytics",
+    "network_url": {
+      "hostname": "region1.analytics.google.com",
+      "paths": ["/g/collect"]
+    }
+  },
+  {
+    "name": "Google Analytics",
+    "network_url": {
+      "hostname": "www.google-analytics.com",
+      "paths": ["/j/collect"]
+    }
+  },
+  {
+    "name": "Google Analytics",
+    "network_url": {
+      "hostname": "stats.g.doubleclick.net",
+      "paths": ["/j/collect"]
+    }
+  },
+  {
+    "name": "Google Maps",
+    "network_url": {
+      "hostname": "maps.googleapis.com",
+      "paths": ["/maps/api/mapsjs/gen_204"]
+    }
+  },
+  {
+    "name": "Google reCAPTCHA",
+    "network_url": {
+      "hostname": "www.google.com",
+      "paths": ["/recaptcha/api2/reload", "/recaptcha/api2/clr"]
+    }
+  },
+  {
+    "name": "Wix",
+    "network_url": {
+      "hostname": "siteassets.parastorage.com",
+      "paths": ["/pages/pages/thunderbolt"]
+    }
+  },
+  {
+    "name": "Wix Chat",
+    "network_url": {
+      "hostname": "engage.wixapps.net",
+      "paths": ["/_api/chat-web/v1/real-time-tokens"]
+    }
+  },
+  {
+    "name": "CookieYes",
+    "network_url": {
+      "hostname": "cdn-cookieyes.com",
+      "path_prefix": "/client_data/",
+      "path_suffix": ".json"
+    }
+  },
+  {
+    "name": "Cloudflare Web Analytics",
+    "network_url": {
+      "paths": ["/cdn-cgi/rum", "/cdn-cgi/rum/"]
+    }
+  },
+  {
+    "name": "Shop Pay",
+    "network_url": {
+      "hostname": "shop.app",
+      "paths": ["/pay/session"]
+    }
+  },
+  {
+    "name": "Akamai mPulse",
+    "network_url": {
+      "hostname": "c.go-mpulse.net",
+      "paths": ["/api/config.json"]
+    }
+  },
+  {
+    "name": "Yandex Metrica",
+    "network_url": {
+      "hostname": "mc.yandex.com",
+      "path_prefix": "/watch/"
+    }
+  },
+  {
+    "name": "Microsoft Clarity",
+    "network_url": {
+      "hostname": "o.clarity.ms",
+      "paths": ["/collect"]
+    }
+  },
+  {
+    "name": "Microsoft Clarity",
+    "network_url": {
+      "hostname": "q.clarity.ms",
+      "paths": ["/collect"]
+    }
+  },
+  {
+    "name": "LinkedIn Insight Tag",
+    "network_url": {
+      "hostname": "px.ads.linkedin.com",
+      "paths": ["/wa/"]
+    }
+  },
+  {
+    "name": "Humblytics",
+    "network_url": {
+      "hostname": "app.humblytics.com",
+      "paths": ["/api/v1/metrics"]
+    }
+  },
+  {
+    "name": "Sentry",
+    "network_url": {
+      "hostname": "o459011.ingest.sentry.io",
+      "path_prefix": "/api/",
+      "path_suffix": "/envelope/"
+    }
+  },
+  {
+    "name": "InMobi CMP",
+    "network_url": {
+      "hostname": "cmp.inmobi.com",
+      "path_prefix": "/GVL-v2/"
+    }
+  },
+  {
+    "name": "InMobi CMP",
+    "network_url": {
+      "hostname": "cmp.inmobi.com",
+      "path_prefix": "/GVL-v3/"
+    }
+  },
+  {
+    "name": "Adobe Experience Cloud ID Service",
+    "network_url": {
+      "hostname": "dpm.demdex.net",
+      "paths": ["/id"]
+    }
+  },
+  {
+    "name": "Twilio Segment",
+    "network_url": {
+      "hostname": "cdn.segment.com",
+      "path_prefix": "/v1/projects/",
+      "path_suffix": "/settings"
+    }
+  },
+  {
+    "name": "Pinterest Tag",
+    "network_url": {
+      "hostname": "ct.pinterest.com",
+      "paths": ["/v3/"]
+    }
+  },
+  {
+    "name": "Qualtrics Site Intercept",
+    "network_url": {
+      "hostname": "siteintercept.qualtrics.com",
+      "path_suffix": "/Targeting.php"
+    }
+  },
+  {
+    "name": "Zoho SalesIQ",
+    "network_url": {
+      "hostname": "salesiq.zohopublic.com",
+      "paths": ["/visitor/v3/channels/website"]
+    }
+  },
+  {
+    "name": "ActiveProspect TrustedForm",
+    "network_url": {
+      "hostname": "api.trustedform.com",
+      "paths": ["/certs"]
+    }
+  },
+  {
+    "name": "Medallia Digital Experience Analytics",
+    "network_url": {
+      "hostname": "collection.decibelinsight.net",
+      "path_prefix": "/i/",
+      "path_suffix": "/c.json"
+    }
+  },
+  {
+    "name": "Google Identity Toolkit",
+    "network_url": {
+      "hostname": "www.googleapis.com",
+      "paths": ["/identitytoolkit/v3/relyingparty/verifyCustomToken"]
+    }
+  },
+  {
+    "name": "ShareThis",
+    "network_url": {
+      "hostname": "l.sharethis.com",
+      "paths": ["/pview"]
+    }
+  },
+  {
+    "name": "Hello Elementor",
+    "path_prefix": "/wp-content/themes/hello-elementor/"
+  },
+  {
+    "name": "Hello Elementor",
+    "css_url": {"path_prefix": "/wp-content/themes/hello-elementor/"}
+  },
+  {
+    "name": "Astra",
+    "path_prefix": "/wp-content/themes/astra/"
+  },
+  {
+    "name": "Astra",
+    "css_url": {"path_prefix": "/wp-content/themes/astra/"}
+  },
+  {
+    "name": "Astra Pro",
+    "path_prefix": "/wp-content/uploads/astra-addon/"
+  },
+  {
+    "name": "Astra Pro",
+    "css_url": {"path_prefix": "/wp-content/uploads/astra-addon/"}
+  },
+  {
+    "name": "Divi",
+    "path_prefix": "/wp-content/themes/Divi/"
+  },
+  {
+    "name": "Divi",
+    "css_url": {"path_prefix": "/wp-content/themes/Divi/"}
+  },
+  {
+    "name": "Akismet",
+    "path_prefix": "/wp-content/plugins/akismet/"
+  },
+  {
+    "name": "WPForms",
+    "path_prefix": "/wp-content/plugins/wpforms-lite/"
+  },
+  {
+    "name": "WPForms",
+    "css_url": {"path_prefix": "/wp-content/plugins/wpforms-lite/"}
+  },
+  {
+    "name": "WP Statistics",
+    "path_prefix": "/wp-content/plugins/wp-statistics/"
+  },
+  {
+    "name": "Burst Statistics",
+    "path_prefix": "/wp-content/plugins/burst-statistics/"
+  },
+  {
+    "name": "Joinchat",
+    "path_prefix": "/wp-content/plugins/creame-whatsapp-me/"
+  },
+  {
+    "name": "Joinchat",
+    "css_url": {"path_prefix": "/wp-content/plugins/creame-whatsapp-me/"}
+  },
+  {
+    "name": "My Sticky Bar",
+    "path_prefix": "/wp-content/plugins/mystickymenu/"
+  },
+  {
+    "name": "My Sticky Bar",
+    "css_url": {"path_prefix": "/wp-content/plugins/mystickymenu/"}
+  },
+  {
+    "name": "Smash Balloon Social Photo Feed",
+    "path_prefix": "/wp-content/plugins/instagram-feed/"
+  },
+  {
+    "name": "Smash Balloon Social Photo Feed",
+    "css_url": {"path_prefix": "/wp-content/plugins/instagram-feed/"}
+  },
+  {
+    "name": "CoBlocks",
+    "path_prefix": "/wp-content/plugins/coblocks/"
+  },
+  {
+    "name": "Formidable Forms",
+    "css_url": {"path_prefix": "/wp-content/plugins/formidable/"}
+  },
+  {
+    "name": "Formidable Forms",
+    "path_prefix": "/wp-content/plugins/formidable-pro/"
+  },
+  {
+    "name": "SiteOrigin Page Builder",
+    "path_prefix": "/wp-content/plugins/siteorigin-panels/"
+  },
+  {
+    "name": "SiteOrigin Page Builder",
+    "css_url": {"path_prefix": "/wp-content/plugins/siteorigin-panels/"}
+  },
+  {
+    "name": "SiteOrigin Widgets Bundle",
+    "path_prefix": "/wp-content/plugins/so-widgets-bundle/"
+  },
+  {
+    "name": "SiteOrigin Widgets Bundle",
+    "css_url": {"path_prefix": "/wp-content/plugins/so-widgets-bundle/"}
+  },
+  {
+    "name": "Ultimate Addons for Elementor Pro",
+    "path_prefix": "/wp-content/plugins/ultimate-elementor/"
+  },
+  {
+    "name": "Ultimate Addons for Elementor Pro",
+    "css_url": {"path_prefix": "/wp-content/plugins/ultimate-elementor/"}
+  },
+  {
+    "name": "CMB2",
+    "path_prefix": "/wp-content/plugins/cmb2/"
+  },
+  {
+    "name": "CMB2",
+    "css_url": {"path_prefix": "/wp-content/plugins/cmb2/"}
+  },
+  {
+    "name": "Storefront Theme",
+    "path_prefix": "/wp-content/themes/storefront/"
+  },
+  {
+    "name": "OceanWP",
+    "path_prefix": "/wp-content/themes/oceanwp/"
+  },
+  {
+    "name": "OceanWP",
+    "css_url": {"path_prefix": "/wp-content/themes/oceanwp/"}
+  },
+  {
+    "name": "Twenty Twelve",
+    "path_prefix": "/wp-content/themes/twentytwelve/"
+  },
+  {
+    "name": "Twenty Twelve",
+    "css_url": {"path_prefix": "/wp-content/themes/twentytwelve/"}
+  },
+  {
+    "name": "JetEngine",
+    "path_prefix": "/wp-content/plugins/jet-engine/"
+  },
+  {
+    "name": "JetEngine",
+    "css_url": {"path_prefix": "/wp-content/plugins/jet-engine/"}
+  },
+  {
+    "name": "JetTabs",
+    "path_prefix": "/wp-content/plugins/jet-tabs/"
+  },
+  {
+    "name": "JetTabs",
+    "css_url": {"path_prefix": "/wp-content/plugins/jet-tabs/"}
+  },
+  {
+    "name": "JetPopup",
+    "path_prefix": "/wp-content/plugins/jet-popup/"
+  },
+  {
+    "name": "JetPopup",
+    "css_url": {"path_prefix": "/wp-content/plugins/jet-popup/"}
+  },
+  {
+    "name": "JetElements",
+    "path_prefix": "/wp-content/plugins/jet-elements/"
+  },
+  {
+    "name": "JetElements",
+    "css_url": {"path_prefix": "/wp-content/plugins/jet-elements/"}
+  },
+  {
+    "name": "JetThemeCore",
+    "css_url": {"path_prefix": "/wp-content/plugins/jet-theme-core/"}
+  },
+  {
+    "name": "JetMenu",
+    "css_url": {"path_prefix": "/wp-content/plugins/jet-menu/"}
+  },
+  {
+    "name": "Jetpack Stats",
+    "hostname": "stats.wp.com",
+    "path_prefix": "/e-",
+    "path_suffix": ".js"
+  },
+  {
+    "name": "jQuery",
+    "hostname": "ajax.googleapis.com",
+    "path_prefix": "/ajax/libs/jquery/",
+    "path_suffix": ".js"
+  },
+  {
+    "name": "jQuery",
+    "hostname": "cdnjs.cloudflare.com",
+    "path_prefix": "/ajax/libs/jquery/",
+    "path_suffix": ".js"
+  },
+  {
+    "name": "jQuery",
+    "hostname": "code.jquery.com",
+    "paths": ["/jquery-1.7.1.min.js", "/jquery-3.3.1.min.js", "/jquery-3.6.0.min.js"]
+  },
+  {
+    "name": "Web Font Loader",
+    "hostname": "ajax.googleapis.com",
+    "path_prefix": "/ajax/libs/webfont/",
+    "path_suffix": "/webfont.js"
+  },
+  {
+    "name": "Font Awesome",
+    "hostname": "kit.fontawesome.com",
+    "path_suffix": ".js"
+  },
+  {
+    "name": "Font Awesome",
+    "css_url": {"hostname": "cdnjs.cloudflare.com", "path_prefix": "/ajax/libs/font-awesome/", "path_suffix": ".css"}
+  },
+  {
+    "name": "Cloudflare Email Address Obfuscation",
+    "path_prefix": "/cdn-cgi/scripts/",
+    "path_suffix": "/cloudflare-static/email-decode.min.js"
+  },
+  {
+    "name": "Usercentrics",
+    "hostname": "app.eu.usercentrics.eu",
+    "paths": ["/browser-ui/latest/loader.js"]
+  },
+  {
+    "name": "Humblytics",
+    "hostname": "app.humblytics.com",
+    "paths": ["/hmbl.min.js"]
+  },
+  {
+    "name": "Heyflow",
+    "hostname": "assets.prd.heyflow.com",
+    "paths": ["/builder/widget/latest/webview.js"]
+  },
+  {
+    "name": "OneTrust Cookie Consent",
+    "hostname": "cdn-ukwest.onetrust.com",
+    "path_suffix": "/otSDKStub.js"
+  },
+  {
+    "name": "ComplyAuto Cookie Consent",
+    "hostname": "cdn.complyauto.com",
+    "paths": ["/cookiebanner/banner.js"]
+  },
+  {
+    "name": "ComplyAuto Cookie Consent",
+    "hostname": "cdn.complyauto.com",
+    "path_prefix": "/cookiebanner/banner/",
+    "path_suffix": "/blocker.js"
+  },
+  {
+    "name": "Dynamic Yield",
+    "hostname": "cdn.dynamicyield.com",
+    "path_prefix": "/api/",
+    "path_suffix": "/api_static.js"
+  },
+  {
+    "name": "Dynamic Yield",
+    "hostname": "cdn.dynamicyield.com",
+    "path_prefix": "/api/",
+    "path_suffix": "/api_dynamic.js"
+  },
+  {
+    "name": "PrintFriendly",
+    "hostname": "cdn.printfriendly.com",
+    "paths": ["/printfriendly.js"]
+  },
+  {
+    "name": "etracker",
+    "hostname": "code.etracker.com",
+    "paths": ["/code/e.js"]
+  },
+  {
+    "name": "Akamai mPulse",
+    "hostname": "s.go-mpulse.net",
+    "path_prefix": "/boomerang/"
+  },
+  {
+    "name": "Google Identity Services",
+    "hostname": "accounts.google.com",
+    "paths": ["/gsi/client"]
+  },
+  {
+    "name": "Google Identity Services",
+    "css_url": {"hostname": "accounts.google.com", "paths":["/gsi/style"]}
+  },
+  {
+    "name": "accessiBe accessWidget",
+    "hostname": "acsbapp.com",
+    "paths": ["/apps/app/dist/js/app.js"]
+  },
+  {
+    "name": "HubSpot",
+    "hostname": "js-na2.hs-scripts.com",
+    "path_suffix": ".js"
+  },
+  {
+    "name": "Finsweet Attributes",
+    "hostname": "cdn.jsdelivr.net",
+    "path_prefix": "/npm/@finsweet/attributes@",
+    "path_suffix": "/attributes.js"
+  },
+  {
+    "name": "GSAP",
+    "hostname": "cdn.prod.website-files.com",
+    "path_prefix": "/gsap/",
+    "path_suffix": "/gsap.min.js"
+  },
+  {
+    "name": "GSAP",
+    "hostname": "unpkg.com",
+    "path_prefix": "/gsap@",
+    "path_suffix": "/gsap.min.js"
+  },
+  {
+    "name": "GSAP ScrollTrigger",
+    "path_suffix": "/ScrollTrigger.min.js"
+  },
+  {
+    "name": "AOS",
+    "path_suffix": "/aos.js"
+  },
+  {
+    "name": "AOS",
+    "css_url": {"path_suffix": "/aos.css"}
+  },
+  {
+    "name": "Animate.css",
+    "css_url": {"hostname": "cdn.jsdelivr.net", "path_prefix": "/animatecss/", "path_suffix": "/animate.css"}
+  },
+  {
+    "name": "Glide.js",
+    "hostname": "cdnjs.cloudflare.com",
+    "path_prefix": "/ajax/libs/Glide.js/",
+    "path_suffix": ".js"
+  },
+  {
+    "name": "Glide.js",
+    "css_url": {"hostname": "cdnjs.cloudflare.com", "path_prefix": "/ajax/libs/Glide.js/", "path_suffix": ".css"}
+  },
+  {
+    "name": "Select2",
+    "hostname": "cdn.jsdelivr.net",
+    "path_prefix": "/npm/select2@",
+    "path_suffix": ".js"
+  },
+  {
+    "name": "Iconify Icon",
+    "hostname": "cdn.jsdelivr.net",
+    "path_prefix": "/npm/iconify-icon@",
+    "path_suffix": "/iconify-icon.min.js"
+  },
+  {
+    "name": "Boxicons",
+    "css_url": {"hostname": "unpkg.com", "path_prefix": "/boxicons@", "path_suffix": "/boxicons.min.css"}
+  },
+  {
+    "name": "List.js",
+    "hostname": "cdnjs.cloudflare.com",
+    "path_prefix": "/ajax/libs/list.js/",
+    "path_suffix": "/list.min.js"
+  },
+  {
+    "name": "jQuery Counter-Up",
+    "hostname": "cdn.jsdelivr.net",
+    "path_prefix": "/jquery.counterup/",
+    "path_suffix": "/jquery.counterup.min.js"
+  },
+  {
+    "name": "Waypoints",
+    "hostname": "cdnjs.cloudflare.com",
+    "path_prefix": "/ajax/libs/waypoints/",
+    "path_suffix": "/waypoints.min.js"
+  },
+  {
+    "name": "ASP.NET AJAX",
+    "path_suffix": "/ScriptResource.axd"
+  },
+  {
+    "name": "Accessibility New Window Warnings",
+    "path_prefix": "/wp-content/plugins/accessibility-new-window-warnings/"
+  },
+  {
+    "name": "Accessibility New Window Warnings",
+    "css_url": {"path_prefix": "/wp-content/plugins/accessibility-new-window-warnings/"}
+  },
+  {
+    "name": "ActiveProspect TrustedForm",
+    "hostname": "cdn.trustedform.com",
+    "paths": ["/bootstrap.js"]
+  },
+  {
+    "name": "ActiveProspect TrustedForm",
+    "hostname": "cdn.trustedform.com",
+    "path_prefix": "/trustedform-",
+    "path_suffix": ".js"
+  },
+  {
+    "name": "Advanced Woo Search",
+    "path_prefix": "/wp-content/plugins/advanced-woo-search/"
+  },
+  {
+    "name": "Advanced Woo Search",
+    "css_url": {"path_prefix": "/wp-content/plugins/advanced-woo-search/"}
+  },
+  {
+    "name": "Algolia Autocomplete",
+    "hostname": "cdn.jsdelivr.net",
+    "paths": ["/npm/@algolia/autocomplete-js"]
+  },
+  {
+    "name": "All in One SEO",
+    "path_prefix": "/wp-content/plugins/all-in-one-seo-pack/"
+  },
+  {
+    "name": "All in One SEO",
+    "css_url": {"path_prefix": "/wp-content/plugins/all-in-one-seo-pack/"}
+  },
+  {
+    "name": "ALTCHA",
+    "hostname": "cdn.jsdelivr.net",
+    "paths": ["/npm/altcha/dist/altcha.js"]
+  },
+  {
+    "name": "Astra Pro",
+    "path_prefix": "/wp-content/plugins/astra-addon/"
+  },
+  {
+    "name": "Avada Builder",
+    "path_prefix": "/wp-content/plugins/fusion-builder/"
+  },
+  {
+    "name": "Avada Theme",
+    "path_prefix": "/wp-content/themes/Avada/"
+  },
+  {
+    "name": "Baidu Tongji",
+    "hostname": "hm.baidu.com",
+    "paths": ["/hm.js"]
+  },
+  {
+    "name": "Beaver Builder",
+    "path_prefix": "/wp-content/plugins/bb-plugin/"
+  },
+  {
+    "name": "Beaver Builder",
+    "css_url": {"path_prefix": "/wp-content/plugins/bb-plugin/"}
+  },
+  {
+    "name": "Beaver Builder Theme",
+    "path_prefix": "/wp-content/themes/bb-theme/"
+  },
+  {
+    "name": "Beaver Builder Theme",
+    "css_url": {"path_prefix": "/wp-content/themes/bb-theme/"}
+  },
+  {
+    "name": "BeTheme",
+    "css_url": {"path_prefix": "/css/wp-content/themes/betheme/"}
+  },
+  {
+    "name": "BeTheme",
+    "path_prefix": "/css/wp-content/themes/betheme/"
+  },
+  {
+    "name": "Beusable",
+    "hostname": "samsungrum.beusable.net",
+    "path_prefix": "/load/"
+  },
+  {
+    "name": "Bluehost WordPress Plugin",
+    "path_prefix": "/wp-content/plugins/bluehost-wordpress-plugin/"
+  },
+  {
+    "name": "Breakdance",
+    "path_prefix": "/wp-content/plugins/breakdance/"
+  },
+  {
+    "name": "Breakdance",
+    "css_url": {"path_prefix": "/wp-content/plugins/breakdance/"}
+  },
+  {
+    "name": "Bricks",
+    "path_prefix": "/wp-content/themes/bricks/"
+  },
+  {
+    "name": "Bricks",
+    "css_url": {"path_prefix": "/wp-content/themes/bricks/"}
+  },
+  {
+    "name": "BricksExtras",
+    "path_prefix": "/wp-content/plugins/bricksextras/"
+  },
+  {
+    "name": "BricksExtras",
+    "css_url": {"path_prefix": "/wp-content/plugins/bricksextras/"}
+  },
+  {
+    "name": "Bridge Theme",
+    "path_prefix": "/wp-content/themes/bridge/"
+  },
+  {
+    "name": "Bridge Theme",
+    "css_url": {"path_prefix": "/wp-content/themes/bridge/"}
+  },
+  {
+    "name": "Burst Statistics",
+    "paths": ["/wp-content/uploads/burst/js/burst.min.js"]
+  },
+  {
+    "name": "Button Block",
+    "path_prefix": "/wp-content/plugins/button-block/"
+  },
+  {
+    "name": "Button Block",
+    "css_url": {"path_prefix": "/wp-content/plugins/button-block/"}
+  },
+  {
+    "name": "Call Now Button",
+    "css_url": {"path_prefix": "/wp-content/plugins/call-now-button/"}
+  },
+  {
+    "name": "Catch Box Theme",
+    "path_prefix": "/wp-content/themes/catch-box/"
+  },
+  {
+    "name": "Catch Box Theme",
+    "css_url": {"path_prefix": "/wp-content/themes/catch-box/"}
+  },
+  {
+    "name": "Chaty",
+    "path_prefix": "/wp-content/plugins/chaty/"
+  },
+  {
+    "name": "Chaty",
+    "css_url": {"path_prefix": "/wp-content/plugins/chaty/"}
+  },
+  {
+    "name": "Cherry Financing Widget",
+    "hostname": "files.withcherry.com",
+    "paths": ["/widgets/widget.js"]
+  },
+  {
+    "name": "Click to Chat by HoliThemes",
+    "path_prefix": "/wp-content/plugins/click-to-chat-for-whatsapp/"
+  },
+  {
+    "name": "Click to Chat by HoliThemes",
+    "css_url": {"path_prefix": "/wp-content/plugins/click-to-chat-for-whatsapp/"}
+  },
+  {
+    "name": "Click to Chat by HoliThemes",
+    "css_url": {"path_prefix": "/css/wp-content/plugins/click-to-chat-for-whatsapp/"}
+  },
+  {
+    "name": "Click to Chat by HoliThemes",
+    "path_prefix": "/css/wp-content/plugins/click-to-chat-for-whatsapp/"
+  },
+  {
+    "name": "Complianz",
+    "path_prefix": "/wp-content/plugins/complianz-gdpr/"
+  },
+  {
+    "name": "Complianz",
+    "css_url": {"path_prefix": "/wp-content/plugins/complianz-gdpr/"}
+  },
+  {
+    "name": "Constant Contact Signup Forms",
+    "hostname": "static.ctctcdn.com",
+    "paths": ["/js/signup-form-widget/current/signup-form-widget.min.js"]
+  },
+  {
+    "name": "Constant Contact Signup Forms",
+    "css_url": {"hostname": "static.ctctcdn.com", "paths": ["/js/signup-form-widget/current/signup-form-widget.css"]}
+  },
+  {
+    "name": "Construction Light Theme",
+    "path_prefix": "/wp-content/themes/construction-light/"
+  },
+  {
+    "name": "Construction Light Theme",
+    "css_url": {"path_prefix": "/wp-content/themes/construction-light/"}
+  },
+  {
+    "name": "Contact Form 7",
+    "css_url": {"path_prefix": "/css/wp-content/plugins/contact-form-7/"}
+  },
+  {
+    "name": "Contact Form 7",
+    "path_prefix": "/css/wp-content/plugins/contact-form-7/"
+  },
+  {
+    "name": "Contact Form 7 Phone Mask Field",
+    "path_prefix": "/wp-content/plugins/cf7-phone-mask-field/"
+  },
+  {
+    "name": "Cookie Information",
+    "path_prefix": "/wp-content/plugins/wp-gdpr-compliance/"
+  },
+  {
+    "name": "Cookie Notice & Compliance",
+    "path_prefix": "/wp-content/plugins/cookie-notice/"
+  },
+  {
+    "name": "Cookie Notice & Compliance",
+    "css_url": {"path_prefix": "/wp-content/plugins/cookie-notice/"}
+  },
+  {
+    "name": "CookieYes",
+    "path_prefix": "/wp-content/plugins/cookie-law-info/"
+  },
+  {
+    "name": "CookieYes",
+    "css_url": {"path_prefix": "/wp-content/plugins/cookie-law-info/"}
+  },
+  {
+    "name": "Countdown Builder",
+    "path_prefix": "/wp-content/plugins/countdown-builder/"
+  },
+  {
+    "name": "Countdown Builder",
+    "css_url": {"path_prefix": "/wp-content/plugins/countdown-builder/"}
+  },
+  {
+    "name": "Criteo OneTag",
+    "hostname": "dynamic.criteo.com",
+    "paths": ["/js/ld/ld.js"]
+  },
+  {
+    "name": "CryptX",
+    "path_prefix": "/wp-content/plugins/cryptx/"
+  },
+  {
+    "name": "CryptX",
+    "css_url": {"path_prefix": "/wp-content/plugins/cryptx/"}
+  },
+  {
+    "name": "Directorist",
+    "css_url": {"path_prefix": "/wp-content/plugins/directorist/"}
+  },
+  {
+    "name": "DISH Website",
+    "hostname": "cdn.website.dish.co",
+    "path_prefix": "/static/",
+    "path_suffix": "/designery-website.body.mod.min.js"
+  },
+  {
+    "name": "Ditty",
+    "path_prefix": "/wp-content/plugins/ditty-news-ticker/"
+  },
+  {
+    "name": "Ditty",
+    "css_url": {"path_prefix": "/wp-content/plugins/ditty-news-ticker/"}
+  },
+  {
+    "name": "Divi Pixel",
+    "path_prefix": "/wp-content/plugins/divi-pixel/"
+  },
+  {
+    "name": "Divi Pixel",
+    "css_url": {"path_prefix": "/wp-content/plugins/divi-pixel/"}
+  },
+  {
+    "name": "Elementor",
+    "css_url": {"path_prefix": "/css/wp-content/plugins/elementor/"}
+  },
+  {
+    "name": "Elementor",
+    "path_prefix": "/css/wp-content/plugins/elementor/"
+  },
+  {
+    "name": "Elfsight",
+    "hostname": "elfsightcdn.com",
+    "paths": ["/platform.js"]
+  },
+  {
+    "name": "Enfold Theme",
+    "path_prefix": "/wp-content/themes/enfold/"
+  },
+  {
+    "name": "Equalize Digital Accessibility Checker",
+    "path_prefix": "/wp-content/plugins/accessibility-checker/"
+  },
+  {
+    "name": "Equalize Digital Accessibility Checker",
+    "css_url": {"path_prefix": "/wp-content/plugins/accessibility-checker/"}
+  },
+  {
+    "name": "Essential Addons for Elementor",
+    "path_prefix": "/wp-content/plugins/essential-addons-for-elementor-lite/"
+  },
+  {
+    "name": "Essential Addons for Elementor",
+    "css_url": {"path_prefix": "/wp-content/plugins/essential-addons-for-elementor-lite/"}
+  },
+  {
+    "name": "Essential Blocks",
+    "path_prefix": "/wp-content/plugins/essential-blocks/"
+  },
+  {
+    "name": "Essential Widgets",
+    "path_prefix": "/wp-content/plugins/essential-widgets/"
+  },
+  {
+    "name": "Essential Widgets",
+    "css_url": {"path_prefix": "/wp-content/plugins/essential-widgets/"}
+  },
+  {
+    "name": "etracker",
+    "hostname": "code.etracker.com",
+    "paths": ["/code/e.js", "/t.js"]
+  },
+  {
+    "name": "Fancyapps Fancybox",
+    "path_suffix": "/jquery.fancybox.min.js"
+  },
+  {
+    "name": "Fast Simon",
+    "hostname": "wix-instantsearchplus-ssl.akamaized.net",
+    "path_prefix": "/wix_widget/js/"
+  },
+  {
+    "name": "Fast Simon",
+    "css_url": {"hostname": "wix-instantsearchplus-ssl.akamaized.net", "path_prefix": "/wix_widget/css/"}
+  },
+  {
+    "name": "Flodesk",
+    "css_url": {"hostname": "usercontent.flodesk.com", "path_suffix": ".css"}
+  },
+  {
+    "name": "GeneratePress",
+    "path_prefix": "/wp-content/themes/generatepress/"
+  },
+  {
+    "name": "GeneratePress",
+    "css_url": {"path_prefix": "/wp-content/themes/generatepress/"}
+  },
+  {
+    "name": "Google Ads",
+    "network_url": {"hostname": "www.googleadservices.com", "path_prefix": "/pagead/conversion/"}
+  },
+  {
+    "name": "Gravity Forms reCAPTCHA Add-On",
+    "path_prefix": "/wp-content/plugins/gravityformsrecaptcha/"
+  },
+  {
+    "name": "Gravity Forms Turnstile Add-On",
+    "path_prefix": "/wp-content/plugins/gravityformsturnstile/"
+  },
+  {
+    "name": "GS Logo Slider",
+    "path_prefix": "/wp-content/plugins/gs-logo-slider/"
+  },
+  {
+    "name": "GS Logo Slider",
+    "css_url": {"path_prefix": "/wp-content/plugins/gs-logo-slider/"}
+  },
+  {
+    "name": "GSAP",
+    "hostname": "cdn.jsdelivr.net",
+    "path_prefix": "/npm/gsap@",
+    "path_suffix": "/dist/gsap.min.js"
+  },
+  {
+    "name": "GSAP ScrollTrigger",
+    "hostname": "cdn.jsdelivr.net",
+    "path_prefix": "/npm/gsap@",
+    "path_suffix": "/dist/ScrollTrigger.min.js"
+  },
+  {
+    "name": "HighLevel",
+    "network_url": {"hostname": "backend.leadconnectorhq.com", "path_prefix": "/calendars/", "path_suffix": "/free-slots"}
+  },
+  {
+    "name": "Hotjar",
+    "hostname": "static.hotjar.com",
+    "path_prefix": "/c/hotjar-",
+    "path_suffix": ".js"
+  },
+  {
+    "name": "HubSpot",
+    "hostname": "js-na2.hs-banner.com",
+    "path_prefix": "/v2/",
+    "path_suffix": "/banner.js"
+  },
+  {
+    "name": "HubSpot",
+    "hostname": "js.hs-banner.com",
+    "path_prefix": "/v2/",
+    "path_suffix": "/banner.js"
+  },
+  {
+    "name": "HubSpot",
+    "hostname": "js.hs-analytics.net",
+    "path_prefix": "/analytics/",
+    "path_suffix": ".js"
+  },
+  {
+    "name": "HubSpot",
+    "hostname": "js.hscollectedforms.net",
+    "paths": ["/collectedforms.js"]
+  },
+  {
+    "name": "HubSpot",
+    "hostname": "js-na2.hscollectedforms.net",
+    "paths": ["/collectedforms.js"]
+  },
+  {
+    "name": "HubSpot",
+    "hostname": "js.hsadspixel.net",
+    "paths": ["/pixels.js"]
+  },
+  {
+    "name": "Iconify Icon",
+    "hostname": "cdn.jsdelivr.net",
+    "path_prefix": "/npm/iconify-icon@",
+    "path_suffix": "/dist/iconify-icon.min.js"
+  },
+  {
+    "name": "imagesLoaded",
+    "path_suffix": "/imagesloaded.pkgd.min.js"
+  },
+  {
+    "name": "InMobi CMP",
+    "hostname": "cmp.inmobi.com",
+    "path_prefix": "/choice/",
+    "path_suffix": "/choice.js"
+  },
+  {
+    "name": "InstantSearch.js",
+    "hostname": "cdn.jsdelivr.net",
+    "path_prefix": "/npm/instantsearch.js@",
+    "path_suffix": "/dist/instantsearch.production.min.js"
+  },
+  {
+    "name": "Involve Asia",
+    "hostname": "invol.co",
+    "paths": ["/icmt.js"]
+  },
+  {
+    "name": "iubenda",
+    "hostname": "cdn.iubenda.com",
+    "paths": ["/iubenda.js", "/iubenda_i_badge.js"]
+  },
+  {
+    "name": "iubenda",
+    "hostname": "cdn.iubenda.com",
+    "path_prefix": "/cookie_solution/iubenda_cs/",
+    "path_suffix": ".js"
+  },
+  {
+    "name": "iziToast",
+    "hostname": "cdn.jsdelivr.net",
+    "path_prefix": "/npm/izitoast/",
+    "path_suffix": "/iziToast.min.js"
+  },
+  {
+    "name": "Jeg Kit for Elementor",
+    "path_prefix": "/wp-content/plugins/jeg-elementor-kit/"
+  },
+  {
+    "name": "Jeg Kit for Elementor",
+    "css_url": {"path_prefix": "/wp-content/plugins/jeg-elementor-kit/"}
+  },
+  {
+    "name": "jQuery",
+    "path_suffix": "/jquery.min.js"
+  },
+  {
+    "name": "jQuery Easing",
+    "path_suffix": "/jquery.easing.js"
+  },
+  {
+    "name": "jQuery FitVids",
+    "path_suffix": "/jquery.fitvids.js"
+  },
+  {
+    "name": "jQuery Migrate",
+    "path_suffix": "/jquery-migrate.min.js"
+  },
+  {
+    "name": "jQuery Sticky Kit",
+    "path_suffix": "/jquery.sticky-kit.min.js"
+  },
+  {
+    "name": "Kadence Blocks",
+    "css_url": {"path_prefix": "/wp-content/plugins/kadence-blocks/"}
+  },
+  {
+    "name": "Kadence Theme",
+    "path_prefix": "/wp-content/themes/kadence/"
+  },
+  {
+    "name": "Kadence Theme",
+    "css_url": {"path_prefix": "/wp-content/themes/kadence/"}
+  },
+  {
+    "name": "LayerSlider",
+    "path_prefix": "/wp-content/plugins/LayerSlider/"
+  },
+  {
+    "name": "LayerSlider",
+    "css_url": {"path_prefix": "/wp-content/plugins/LayerSlider/"}
+  },
+  {
+    "name": "Limy Analytics",
+    "hostname": "sdk.getlimy.ai",
+    "paths": ["/p/limy-analytics.min.js"]
+  },
+  {
+    "name": "LiteSpeed Cache",
+    "path_prefix": "/wp-content/plugins/litespeed-cache/"
+  },
+  {
+    "name": "Magnific Popup",
+    "path_suffix": "/jquery.magnific-popup.min.js"
+  },
+  {
+    "name": "Mailchimp for WordPress",
+    "path_prefix": "/wp-content/plugins/mailchimp-for-wp/"
+  },
+  {
+    "name": "Make Section & Column Clickable for Elementor",
+    "path_prefix": "/wp-content/plugins/make-section-column-clickable-elementor/"
+  },
+  {
+    "name": "Masonry",
+    "path_suffix": "/masonry.pkgd.min.js"
+  },
+  {
+    "name": "Matomo",
+    "path_suffix": "/matomo.js"
+  },
+  {
+    "name": "Matomo",
+    "path_prefix": "/wp-content/plugins/matomo/"
+  },
+  {
+    "name": "Max Mega Menu",
+    "path_prefix": "/wp-content/plugins/megamenu/"
+  },
+  {
+    "name": "Medallia Digital Experience Analytics",
+    "hostname": "cdn.decibelinsight.net",
+    "path_prefix": "/i/",
+    "path_suffix": "/di.js"
+  },
+  {
+    "name": "Medicare Theme",
+    "path_prefix": "/wp-content/themes/medicare/"
+  },
+  {
+    "name": "Medicare Theme",
+    "css_url": {"path_prefix": "/wp-content/themes/medicare/"}
+  },
+  {
+    "name": "MetaSlider",
+    "path_prefix": "/wp-content/plugins/ml-slider/"
+  },
+  {
+    "name": "MetaSlider",
+    "css_url": {"path_prefix": "/wp-content/plugins/ml-slider/"}
+  },
+  {
+    "name": "Modern Events Calendar Lite",
+    "path_prefix": "/wp-content/plugins/modern-events-calendar-lite/"
+  },
+  {
+    "name": "Modern Events Calendar Lite",
+    "css_url": {"path_prefix": "/wp-content/plugins/modern-events-calendar-lite/"}
+  },
+  {
+    "name": "Modernizr",
+    "paths": ["/GridGallery/js/modernizr.custom.js"]
+  },
+  {
+    "name": "Motion",
+    "hostname": "cdn.jsdelivr.net",
+    "path_prefix": "/npm/motion@",
+    "path_suffix": "/+esm"
+  },
+  {
+    "name": "Ocean Extra",
+    "css_url": {"path_prefix": "/wp-content/plugins/ocean-extra/"}
+  },
+  {
+    "name": "Opayo Payment Suite for WooCommerce",
+    "css_url": {"path_prefix": "/wp-content/plugins/sage-pay-server-woocommerce-premium/"}
+  },
+  {
+    "name": "Owl Carousel",
+    "path_suffix": "/owl.carousel.min.js"
+  },
+  {
+    "name": "Page-list",
+    "css_url": {"path_prefix": "/wp-content/plugins/page-list/"}
+  },
+  {
+    "name": "Paid Memberships Pro",
+    "css_url": {"path_prefix": "/wp-content/plugins/paid-memberships-pro/"}
+  },
+  {
+    "name": "Parabola Theme",
+    "path_prefix": "/wp-content/themes/parabola/"
+  },
+  {
+    "name": "Parabola Theme",
+    "css_url": {"path_prefix": "/wp-content/themes/parabola/"}
+  },
+  {
+    "name": "PayPal JavaScript SDK",
+    "hostname": "www.paypal.com",
+    "paths": ["/sdk/js"]
+  },
+  {
+    "name": "Popup Maker",
+    "css_url": {"path_prefix": "/wp-content/plugins/popup-maker/"}
+  },
+  {
+    "name": "Popups by Tmeister",
+    "path_prefix": "/wp-content/plugins/popups/"
+  },
+  {
+    "name": "Popups by Tmeister",
+    "css_url": {"path_prefix": "/wp-content/plugins/popups/"}
+  },
+  {
+    "name": "Popups for Divi",
+    "path_prefix": "/wp-content/plugins/popups-for-divi/"
+  },
+  {
+    "name": "Popups for Divi",
+    "css_url": {"path_prefix": "/wp-content/plugins/popups-for-divi/"}
+  },
+  {
+    "name": "PRO Elements",
+    "css_url": {"path_prefix": "/wp-content/plugins/pro-elements/"}
+  },
+  {
+    "name": "Product Open Pricing for WooCommerce",
+    "path_prefix": "/wp-content/plugins/product-open-pricing-name-your-price-for-woocommerce/"
+  },
+  {
+    "name": "ProfilePress (WP User Avatar)",
+    "path_prefix": "/wp-content/plugins/wp-user-avatar/"
+  },
+  {
+    "name": "ProvenExpert",
+    "hostname": "www.provenexpert.com",
+    "paths": ["/widget/richsnippet.js"]
+  },
+  {
+    "name": "ProvenExpert",
+    "css_url": {"hostname": "www.provenexpert.com", "paths": ["/css/google-stars2025.css"]}
+  },
+  {
+    "name": "Qualtrics Site Intercept",
+    "network_url": {"hostname": "siteintercept.qualtrics.com", "path_prefix": "/", "path_suffix": "/Targeting.php"}
+  },
+  {
+    "name": "Qualtrics Site Intercept",
+    "hostname": "siteintercept.qualtrics.com",
+    "path_prefix": "/dxjsmodule/",
+    "path_suffix": ".js"
+  },
+  {
+    "name": "Quick Page/Post Redirect Plugin",
+    "path_prefix": "/wp-content/plugins/quick-pagepost-redirect-plugin/"
+  },
+  {
+    "name": "Responsive Lightbox & Gallery",
+    "css_url": {"path_prefix": "/wp-content/plugins/responsive-lightbox/"}
+  },
+  {
+    "name": "Rich Showcase for Google Reviews",
+    "path_prefix": "/wp-content/plugins/widget-google-reviews/"
+  },
+  {
+    "name": "Rich Showcase for Google Reviews",
+    "css_url": {"path_prefix": "/wp-content/plugins/widget-google-reviews/"}
+  },
+  {
+    "name": "Salesforce Commerce Cloud Einstein",
+    "hostname": "cdn.cquotient.com",
+    "paths": ["/js/v2/gretel.min.js"]
+  },
+  {
+    "name": "Salesforce Marketing Cloud Personalization",
+    "hostname": "cdn.evgnet.com",
+    "path_prefix": "/beacon/",
+    "path_suffix": "/scripts/evergage.min.js"
+  },
+  {
+    "name": "Schema Theme by MyThemeShop",
+    "path_prefix": "/wp-content/themes/mts_schema/"
+  },
+  {
+    "name": "Schema Theme by MyThemeShop",
+    "css_url": {"path_prefix": "/wp-content/themes/mts_schema/"}
+  },
+  {
+    "name": "Select2",
+    "hostname": "cdn.jsdelivr.net",
+    "path_prefix": "/npm/select2@",
+    "path_suffix": "/dist/js/select2.full.min.js"
+  },
+  {
+    "name": "ShiftNav Pro",
+    "path_prefix": "/wp-content/plugins/shiftnav-pro/"
+  },
+  {
+    "name": "ShiftNav Pro",
+    "css_url": {"path_prefix": "/wp-content/plugins/shiftnav-pro/"}
+  },
+  {
+    "name": "ShopLentor",
+    "path_prefix": "/wp-content/plugins/woolentor-addons/"
+  },
+  {
+    "name": "ShopLentor",
+    "css_url": {"path_prefix": "/wp-content/plugins/woolentor-addons/"}
+  },
+  {
+    "name": "Simple CAPTCHA with Cloudflare Turnstile",
+    "path_prefix": "/wp-content/plugins/simple-cloudflare-turnstile/"
+  },
+  {
+    "name": "Siteimprove Analytics",
+    "hostname": "siteimproveanalytics.com",
+    "path_prefix": "/js/",
+    "path_suffix": ".js"
+  },
+  {
+    "name": "Slick",
+    "path_suffix": "/slick.min.js"
+  },
+  {
+    "name": "Slider Revolution",
+    "css_url": {"path_prefix": "/css/wp-content/plugins/revslider/"}
+  },
+  {
+    "name": "Slider Revolution",
+    "path_prefix": "/css/wp-content/plugins/revslider/"
+  },
+  {
+    "name": "Smart Slider 3",
+    "path_prefix": "/wp-content/plugins/smart-slider-3/"
+  },
+  {
+    "name": "Smart Slider 3",
+    "css_url": {"path_prefix": "/wp-content/plugins/smart-slider-3/"}
+  },
+  {
+    "name": "Social Feed Gallery",
+    "path_prefix": "/wp-content/plugins/insta-gallery/"
+  },
+  {
+    "name": "Soundy Background Music",
+    "path_prefix": "/wp-content/plugins/soundy-background-music/"
+  },
+  {
+    "name": "Soundy Background Music",
+    "css_url": {"path_prefix": "/wp-content/plugins/soundy-background-music/"}
+  },
+  {
+    "name": "Sparkling Theme",
+    "path_prefix": "/wp-content/themes/sparkling/"
+  },
+  {
+    "name": "Sparkling Theme",
+    "css_url": {"path_prefix": "/wp-content/themes/sparkling/"}
+  },
+  {
+    "name": "Sprinklr Live Chat",
+    "hostname": "prod-live-chat.sprinklr.com",
+    "path_prefix": "/api/livechat/handshake/widget/"
+  },
+  {
+    "name": "Sprinklr Live Chat",
+    "hostname": "live-chat-static.sprinklr.com",
+    "path_prefix": "/chat/",
+    "path_suffix": ".js"
+  },
+  {
+    "name": "Stop User Enumeration",
+    "path_prefix": "/wp-content/plugins/stop-user-enumeration/"
+  },
+  {
+    "name": "Superio Theme",
+    "path_prefix": "/wp-content/themes/superio/"
+  },
+  {
+    "name": "Superio Theme",
+    "css_url": {"path_prefix": "/wp-content/themes/superio/"}
+  },
+  {
+    "name": "Swiper",
+    "path_suffix": "/swiper-bundle.min.js"
+  },
+  {
+    "name": "Swiper",
+    "css_url": {"path_suffix": "/swiper-bundle.min.css"}
+  },
+  {
+    "name": "T4B News Ticker",
+    "path_prefix": "/wp-content/plugins/t4b-news-ticker/"
+  },
+  {
+    "name": "T4B News Ticker",
+    "css_url": {"path_prefix": "/wp-content/plugins/t4b-news-ticker/"}
+  },
+  {
+    "name": "Testimonials Widget",
+    "css_url": {"path_prefix": "/wp-content/plugins/testimonials-widget/"}
+  },
+  {
+    "name": "Titan Digital Agency Theme",
+    "path_prefix": "/wp-content/themes/titan-digital-agency/"
+  },
+  {
+    "name": "Titan Digital Agency Theme",
+    "css_url": {"path_prefix": "/wp-content/themes/titan-digital-agency/"}
+  },
+  {
+    "name": "Traction External Links Speed Bump",
+    "path_prefix": "/wp-content/plugins/traction-external-links-speed-bump/"
+  },
+  {
+    "name": "Traction External Links Speed Bump",
+    "css_url": {"path_prefix": "/wp-content/plugins/traction-external-links-speed-bump/"}
+  },
+  {
+    "name": "Transition Slider",
+    "path_prefix": "/wp-content/plugins/transition-slider-lite/"
+  },
+  {
+    "name": "Transition Slider",
+    "css_url": {"path_prefix": "/wp-content/plugins/transition-slider-lite/"}
+  },
+  {
+    "name": "Trusted Shops Trustbadge",
+    "hostname": "widgets.trustedshops.com",
+    "paths": ["/assets/trustbadge.js"]
+  },
+  {
+    "name": "Twenty Seventeen",
+    "path_prefix": "/wp-content/themes/twentyseventeen/"
+  },
+  {
+    "name": "Twenty Seventeen",
+    "css_url": {"path_prefix": "/wp-content/themes/twentyseventeen/"}
+  },
+  {
+    "name": "Typesense InstantSearch Adapter",
+    "hostname": "cdn.jsdelivr.net",
+    "path_prefix": "/npm/typesense-instantsearch-adapter@",
+    "path_suffix": "/dist/typesense-instantsearch-adapter.min.js"
+  },
+  {
+    "name": "Typesense JavaScript Client",
+    "hostname": "cdn.jsdelivr.net",
+    "path_prefix": "/npm/typesense@",
+    "path_suffix": "/dist/typesense.min.js"
+  },
+  {
+    "name": "Ultimate Addons for Beaver Builder",
+    "path_prefix": "/wp-content/plugins/bb-ultimate-addon/"
+  },
+  {
+    "name": "UserWay",
+    "hostname": "cdn.userway.org",
+    "paths": ["/widget.js"]
+  },
+  {
+    "name": "Vela Theme",
+    "path_prefix": "/wp-content/themes/Vela/"
+  },
+  {
+    "name": "Vela Theme",
+    "css_url": {"path_prefix": "/wp-content/themes/Vela/"}
+  },
+  {
+    "name": "Vogue Theme",
+    "path_prefix": "/wp-content/themes/vogue/"
+  },
+  {
+    "name": "Vogue Theme",
+    "css_url": {"path_prefix": "/wp-content/themes/vogue/"}
+  },
+  {
+    "name": "VS Event List",
+    "css_url": {"path_prefix": "/wp-content/plugins/very-simple-event-list/"}
+  },
+  {
+    "name": "Wati WhatsApp Widget",
+    "hostname": "wati-integration-service.clare.ai",
+    "paths": ["/ShopifyWidget/shopifyWidget.js"]
+  },
+  {
+    "name": "WebToffee GDPR Cookie Consent",
+    "path_prefix": "/wp-content/plugins/webtoffee-gdpr-cookie-consent/"
+  },
+  {
+    "name": "WebToffee GDPR Cookie Consent",
+    "css_url": {"path_prefix": "/wp-content/plugins/webtoffee-gdpr-cookie-consent/"}
+  },
+  {
+    "name": "Widget Options",
+    "css_url": {"path_prefix": "/wp-content/plugins/widget-options/"}
+  },
+  {
+    "name": "WooCommerce",
+    "css_url": {"path_prefix": "/css/wp-content/plugins/woocommerce/"}
+  },
+  {
+    "name": "WooCommerce",
+    "path_prefix": "/css/wp-content/plugins/woocommerce/"
+  },
+  {
+    "name": "WooCommerce PDF Invoices",
+    "css_url": {"path_prefix": "/wp-content/plugins/woocommerce-pdf-invoice/"}
+  },
+  {
+    "name": "WooCommerce Product Image Flipper",
+    "css_url": {"path_prefix": "/wp-content/plugins/woocommerce-product-image-flipper/"}
+  },
+  {
+    "name": "WoodMart",
+    "path_prefix": "/wp-content/themes/woodmart/"
+  },
+  {
+    "name": "WoodMart",
+    "css_url": {"path_prefix": "/wp-content/themes/woodmart/"}
+  },
+  {
+    "name": "WP Accessibility",
+    "path_prefix": "/wp-content/plugins/wp-accessibility/"
+  },
+  {
+    "name": "WP Accessibility",
+    "css_url": {"path_prefix": "/wp-content/plugins/wp-accessibility/"}
+  },
+  {
+    "name": "WP Job Board Pro",
+    "path_prefix": "/wp-content/plugins/wp-job-board-pro/"
+  },
+  {
+    "name": "WP Job Board Pro",
+    "css_url": {"path_prefix": "/wp-content/plugins/wp-job-board-pro/"}
+  },
+  {
+    "name": "WP Review Slider Pro",
+    "path_prefix": "/wp-content/plugins/wp-review-slider-pro-premium/"
+  },
+  {
+    "name": "WP Review Slider Pro",
+    "css_url": {"path_prefix": "/wp-content/plugins/wp-review-slider-pro-premium/"}
+  },
+  {
+    "name": "WP Rocket",
+    "path_prefix": "/wp-content/plugins/wp-rocket/"
+  },
+  {
+    "name": "WP TripAdvisor Review Slider",
+    "path_prefix": "/wp-content/plugins/wp-tripadvisor-review-slider/"
+  },
+  {
+    "name": "WP TripAdvisor Review Slider",
+    "css_url": {"path_prefix": "/wp-content/plugins/wp-tripadvisor-review-slider/"}
+  },
+  {
+    "name": "WP-PageNavi",
+    "css_url": {"path_prefix": "/wp-content/plugins/wp-pagenavi/"}
+  },
+  {
+    "name": "WPBakery Page Builder",
+    "path_prefix": "/css/wp-content/plugins/js_composer/"
+  },
+  {
+    "name": "WPFront Notification Bar",
+    "path_prefix": "/wp-content/plugins/wpfront-notification-bar/"
+  },
+  {
+    "name": "WPFront Notification Bar",
+    "css_url": {"path_prefix": "/wp-content/plugins/wpfront-notification-bar/"}
+  },
+  {
+    "name": "YITH WooCommerce Product Add-Ons & Extra Options",
+    "path_prefix": "/wp-content/plugins/yith-woocommerce-advanced-product-options-premium/"
+  },
+  {
+    "name": "YITH WooCommerce Product Add-Ons & Extra Options",
+    "css_url": {"path_prefix": "/wp-content/plugins/yith-woocommerce-advanced-product-options-premium/"}
+  },
+  {
+    "name": "Zephyr Theme",
+    "path_prefix": "/wp-content/themes/Zephyr/"
+  },
+  {
+    "name": "Zoho PageSense",
+    "hostname": "cdn.pagesense.io",
+    "path_prefix": "/js/",
+    "path_suffix": ".js"
+  },
+  {
+    "name": "Zoho SalesIQ",
+    "hostname": "salesiq.zohopublic.com",
+    "paths": ["/widget"]
+  },
+  {
+    "name": "Zotabox",
+    "hostname": "static2.zotabox.com",
+    "paths": ["/widgets.js"]
+  },
+  {
+    "name": "OpenAI Measurement Pixel",
+    "hostname": "bzrcdn.openai.com",
+    "paths": ["/sdk/oaiq.min.js"]
+  },
+  {
+    "name": "OpenAI Measurement Pixel",
+    "network_url": {"hostname": "bzrcdn.openai.com", "path_prefix": "/pixel-config/v1/", "path_suffix": ".json"}
+  },
+  {
+    "name": "Optimise Universal Tracking",
+    "hostname": "track.omguk.com",
+    "paths": ["/e/qs/"]
+  },
+  {
+    "name": "Healthengine Booking Widget",
+    "hostname": "healthengine.com.au",
+    "paths": ["/webplugin/appointments.js"]
+  },
+  {
+    "name": "NightsBridge",
+    "hostname": "www.nightsbridge.co.za",
+    "paths": ["/bridge/view"]
+  },
+  {
+    "name": "Networx Affiliate Form",
+    "hostname": "cdn50.networx.com",
+    "path_prefix": "/resources/JS/api/aff_form.",
+    "path_suffix": ".js"
+  },
+  {
+    "name": "Google Translate Website Widget",
+    "hostname": "translate.google.com",
+    "paths": ["/translate_a/element.js"]
+  },
+  {
+    "name": "AMP",
+    "hostname": "cdn.ampproject.org",
+    "paths": ["/v0.js", "/v0/amp-analytics-0.1.js"]
   }
 ]
