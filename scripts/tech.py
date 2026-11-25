@@ -1,6 +1,8 @@
 import json
 from urllib.parse import parse_qs, urlsplit
 
+from .paths import RULES_PATH
+
 
 URL_FIELDS = {"hostname", "paths", "path_prefix", "path_suffix", "query_param_prefix"}
 TEXT_RULE_FIELDS = ({"header", "header_product"}, {"inline_contains"}, {"meta_generator_prefix"})
@@ -57,7 +59,7 @@ def validate_rules(rules):
     return valid_rules
 
 
-with open("rules.json", encoding="utf-8") as file:
+with RULES_PATH.open(encoding="utf-8") as file:
     RULES = json.load(file)
 
 valid_rules = validate_rules(RULES)

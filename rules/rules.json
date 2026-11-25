@@ -2612,5 +2612,146 @@
     "name": "AMP",
     "hostname": "cdn.ampproject.org",
     "paths": ["/v0.js", "/v0/amp-analytics-0.1.js"]
+  },
+  {
+    "name": "Snowplow",
+    "inline_contains": "GlobalSnowplowNamespace"
+  },
+  {
+    "name": "Snowplow",
+    "network_url": {"paths": ["/com.snowplowanalytics.snowplow/tp2"]}
+  },
+  {
+    "name": "51.LA Website Analytics",
+    "hostname": "sdk.51.la",
+    "paths": ["/js-sdk-pro.min.js"]
+  },
+  {
+    "name": "51.LA Website Analytics",
+    "network_url": {"hostname": "collect-v6.51.la", "paths": ["/v6/collect"]}
+  },
+  {
+    "name": "Tealium",
+    "hostname": "www.disneystore.com",
+    "path_prefix": "/content/tealium/utag/",
+    "path_suffix": "/utag.js"
+  },
+  {
+    "name": "Tealium",
+    "network_url": {"hostname": "collect.tealiumiq.com", "path_suffix": "/i.gif"}
+  },
+  {
+    "name": "Leadsy",
+    "hostname": "r2.leadsy.ai",
+    "paths": ["/tag.js"]
+  },
+  {
+    "name": "New Relic Browser",
+    "hostname": "js-agent.newrelic.com",
+    "path_suffix": ".min.js"
+  },
+  {
+    "name": "Eventbrite Embedded Checkout",
+    "hostname": "www.eventbrite.de",
+    "paths": ["/static/widgets/eb_widgets.js"]
+  },
+  {
+    "name": "Aparat Video Embed",
+    "hostname": "www.aparat.com",
+    "path_prefix": "/embed/"
+  },
+  {
+    "name": "SplitType",
+    "hostname": "cdn.jsdelivr.net",
+    "paths": ["/gh/timothydesign/script/split-type.js"]
+  },
+  {
+    "name": "JavaScript Cookie",
+    "hostname": "cdn.jsdelivr.net",
+    "path_prefix": "/npm/js-cookie@",
+    "path_suffix": "/dist/js.cookie.min.js"
+  },
+  {
+    "name": "Finsweet Attributes",
+    "hostname": "cdn.jsdelivr.net",
+    "path_prefix": "/npm/@finsweet/attributes-cmsload@",
+    "path_suffix": "/cmsload.js"
+  },
+  {
+    "name": "GSAP",
+    "hostname": "cdnjs.cloudflare.com",
+    "path_prefix": "/ajax/libs/gsap/",
+    "path_suffix": "/gsap.min.js"
+  },
+  {
+    "name": "Next.js",
+    "path_prefix": "/_next/static/",
+    "path_suffix": ".js"
+  },
+  {
+    "name": "Next.js",
+    "hostname": "st.hzcdn.com",
+    "path_prefix": "/fe/next-pro-site/",
+    "path_suffix": "/_buildManifest.js"
+  },
+  {
+    "name": "Houzz Pro Website",
+    "hostname": "st.hzcdn.com",
+    "path_prefix": "/fe/next-pro-site/",
+    "path_suffix": ".js"
+  },
+  {
+    "name": "ThoughtMetric",
+    "hostname": "pixel.thoughtmetric.io",
+    "paths": ["/tmpixel.min.js", "/utils.js"]
+  },
+  {
+    "name": "Attribuly",
+    "hostname": "tr.attribuly.com",
+    "path_prefix": "/v3-",
+    "path_suffix": "/attribuly.js"
+  },
+  {
+    "name": "Attribuly",
+    "network_url": {"hostname": "tr.attribuly.com", "path_prefix": "/v2-", "path_suffix": "/event"}
+  },
+  {
+    "name": "Polar Analytics",
+    "network_url": {"hostname": "api-production.polaranalytics.com", "paths": ["/pixel"]}
+  },
+  {
+    "name": "Polar Analytics",
+    "hostname": "unpkg.com",
+    "path_prefix": "/@polar-analytics/pixel-sdk@",
+    "path_suffix": "/dist/index.global.js"
+  },
+  {
+    "name": "Polar Analytics",
+    "hostname": "cdn.shopify.com",
+    "path_prefix": "/extensions/",
+    "path_suffix": "/assets/polar-cart-injector.js"
+  },
+  {
+    "name": "Analyzify",
+    "hostname": "cdn.shopify.com",
+    "path_prefix": "/extensions/",
+    "path_suffix": "/assets/analyzify-functions.js"
+  },
+  {
+    "name": "Analyzify",
+    "hostname": "cdn.shopify.com",
+    "path_prefix": "/extensions/",
+    "path_suffix": "/assets/analyzify-functions-v3.js"
+  },
+  {
+    "name": "Analyzify",
+    "hostname": "cdn.shopify.com",
+    "path_prefix": "/extensions/",
+    "path_suffix": "/assets/an_analyzify.js"
+  },
+  {
+    "name": "Analyzify",
+    "hostname": "cdn-v4.analyzify.app",
+    "paths": ["/assets/an_analyzify.js"]
   }
 ]

@@ -3,31 +3,26 @@ import asyncio
 import json
 from contextlib import nullcontext
 from pathlib import Path
+from tempfile import NamedTemporaryFile
 from urllib.parse import urlsplit
 
 import httpx
 import pyarrow.parquet as pq
 
-from crawler import fetch_page
-from extractor import (
-    extract_css_urls,
-    extract_inline_scripts,
-    extract_internal_links,
-    extract_meta_generator,
-    extract_script_urls,
-)
-from redaction import redact_keys
-from tech import DETECTION_HEADERS, LIST_SIGNAL_FIELDS, added_technology_names, detect_result, linked_technology_additions
+from .crawler import fetch_page
+from .extractor import extract_page
+from .paths import CHECKPOINT_PATH, RESULTS_PATH
+from .redaction import redact_keys
+from .tech import DETECTION_HEADERS, LIST_SIGNAL_FIELDS, added_technology_names, detect_result, linked_technology_additions
 
 
-CHECKPOINT_PATH = Path("results.partial.tmp")
-MAX_LINKED_PAGES = 3
+MAX_LINKED_PAGES = 4
 HTTPS_FALLBACK_STATUSES = {403, 404, 409}
 HTTPS_FALLBACK_ERRORS = {"ConnectError", "ConnectTimeout", "ReadTimeout", "RemoteProtocolError"}
 
 
 def print_results():
-    with open("results.json", encoding="utf-8") as file:
+    with RESULTS_PATH.open(encoding="utf-8") as file:
         saved_results = redact_keys(json.load(file))
 
     for result in saved_results:
@@ -53,7 +48,7 @@ def read_domain(path):
     return table["root_domain"].to_pylist()
 
 
-async def crawl_page(client, semaphore, address, *, same_host_only=False):
+async def crawl_page(client, semaphore, address, *, same_host_only=False, follow_links=False):
     result = {
         "url": address,
         "script_urls": [],
@@ -82,19 +77,18 @@ async def crawl_page(client, semaphore, address, *, same_host_only=False):
             retry_after = error.response.headers.get("retry-after")
             if retry_after:
                 result["retry_after"] = retry_after
-        return redact_keys(result), None
+        return redact_keys(result), None, []
 
-    result["script_urls"] = extract_script_urls(response.text, result["final_url"])
-    result["meta_generator"] = extract_meta_generator(response.text)
-    result["inline_scripts"] = extract_inline_scripts(response.text)
-    result["css_urls"] = extract_css_urls(response.text, result["final_url"])
+    page_url = result["final_url"]
+    signals, links = extract_page(response.text, page_url, follow_links=follow_links)
+    result.update(signals)
     result["headers"] = {
         key: value for key, value in response.headers.items() if key in DETECTION_HEADERS
     }
 
     result = redact_keys(result)
     result["technologies"] = detect_result(result)
-    return result, response
+    return result, page_url, links
 
 
 async def add_render_signals(result, render_page, url):
@@ -130,10 +124,10 @@ async def add_render_signals(result, render_page, url):
 
 
 async def crawl_domain(client, semaphore, domain, render_page=None, *, follow_links=False):
-    homepage, response = await crawl_page(client, semaphore, domain)
+    homepage, page_url, links = await crawl_page(client, semaphore, domain, follow_links=follow_links)
     failed_url = homepage.get("failed_url") or homepage.get("final_url", "")
     if (
-        response is None
+        page_url is None
         and "://" not in str(domain)
         and urlsplit(failed_url).scheme == "http"
         and (
@@ -141,29 +135,27 @@ async def crawl_domain(client, semaphore, domain, render_page=None, *, follow_li
             or homepage["error_type"] in HTTPS_FALLBACK_ERRORS
         )
     ):
-        https_page, https_response = await crawl_page(client, semaphore, f"https://{domain}/")
+        https_page, https_url, https_links = await crawl_page(client, semaphore, f"https://{domain}/", follow_links=follow_links)
         attempt_fields = ("url", "final_url", "failed_url", "status_code", "error", "error_type", "retry_after")
-        if https_response is None:
+        if https_url is None:
             homepage["https_attempt"] = {key: https_page[key] for key in attempt_fields if key in https_page}
         else:
             https_page["http_attempt"] = {key: homepage[key] for key in attempt_fields if key in homepage}
-            homepage, response = https_page, https_response
+            homepage, page_url, links = https_page, https_url, https_links
 
     homepage.pop("url")
     result = {"domain": domain, **homepage}
-    if response is None:
+    if page_url is None:
         return result
 
-    page_url = str(response.url)
     if render_page is not None:
         await add_render_signals(result, render_page, page_url)
 
     if follow_links:
-        links = extract_internal_links(response.text, page_url)[:MAX_LINKED_PAGES]
         pages = await asyncio.gather(
-            *(crawl_page(client, semaphore, link, same_host_only=True) for link in links)
+            *(crawl_page(client, semaphore, link, same_host_only=True) for link in links[:MAX_LINKED_PAGES])
         )
-        result["linked_pages"] = [page for page, _ in pages]
+        result["linked_pages"] = [page for page, _, _ in pages]
         result["linked_added_technologies"] = linked_technology_additions(result)
 
     return result
@@ -176,7 +168,7 @@ async def crawl_domains(domains, results=None, *, render=False, follow_links=Fal
     semaphore = asyncio.Semaphore(10)
     renderer_context = nullcontext()
     if render and any(result is None for result in results):
-        from browser import open_renderer
+        from .browser import open_renderer
 
         renderer_context = open_renderer()
 
@@ -195,10 +187,18 @@ async def crawl_domains(domains, results=None, *, render=False, follow_links=Fal
 
 
 def save_json(path, data):
-    temporary_path = path.with_name(path.name + ".tmp")
-    with temporary_path.open("w", encoding="utf-8") as file:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with NamedTemporaryFile("w", dir=path.parent, prefix=path.name + ".", suffix=".tmp",
+                            encoding="utf-8", delete=False) as file:
+        temporary_path = Path(file.name)
         json.dump(redact_keys(data), file, indent=2, ensure_ascii=False)
-    temporary_path.replace(path)
+    try:
+        temporary_path.replace(path)
+    except PermissionError:
+        raise SystemExit(
+            f"Could not replace {path}. The complete output is saved in {temporary_path}. "
+            f"Close any application using {path.name}, then replace it with the saved file."
+        ) from None
 
 
 def print_linked_summary(results):
@@ -219,7 +219,7 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("path", help="path to parquet file")
     parser.add_argument("--render", action="store_true", help="collect signals with Chromium")
-    parser.add_argument("--follow-links", action="store_true", help="crawl up to three pages linked from each homepage")
+    parser.add_argument("--follow-links", action="store_true", help=f"crawl up to {MAX_LINKED_PAGES} pages linked from each homepage")
     parser.add_argument("-resume", "--resume", action="store_true", help="continue a stopped crawl")
     args = parser.parse_args()
 
@@ -242,7 +242,7 @@ def main():
 
     try:
         asyncio.run(crawl_domains(domains, results, render=args.render, follow_links=args.follow_links))
-        save_json(Path("results.json"), results)
+        save_json(RESULTS_PATH, results)
     except KeyboardInterrupt:
         save_json(CHECKPOINT_PATH, {
             "domains": domains,

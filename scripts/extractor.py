@@ -36,10 +36,20 @@ def _document_base_url(soup, page_url):
     return _resolve_asset_url(page_url, base["href"]) or page_url
 
 
-def extract_script_urls(html, page_url):
+def extract_page(html, page_url, *, follow_links=False):
     soup = BeautifulSoup(html, "html.parser")
     base_url = _document_base_url(soup, page_url)
+    signals = {
+        "script_urls": extract_script_urls(soup, base_url),
+        "css_urls": extract_css_urls(soup, base_url),
+        "inline_scripts": extract_inline_scripts(soup),
+        "meta_generator": extract_meta_generator(soup),
+    }
+    links = extract_internal_links(soup, base_url, page_url) if follow_links else []
+    return signals, links
 
+
+def extract_script_urls(soup, base_url):
     script_urls = []
     for script in soup.find_all("script", src=True):
         url = _resolve_asset_url(base_url, script["src"])
@@ -49,10 +59,7 @@ def extract_script_urls(html, page_url):
     return script_urls
 
 
-def extract_css_urls(html, page_url):
-    soup = BeautifulSoup(html, "html.parser")
-    base_url = _document_base_url(soup, page_url)
-
+def extract_css_urls(soup, base_url):
     css_urls = []
     for link in soup.find_all("link", href=True):
         if "stylesheet" not in [rel.lower() for rel in link.get("rel", [])]:
@@ -65,8 +72,7 @@ def extract_css_urls(html, page_url):
     return css_urls
 
 
-def extract_inline_scripts(html):
-    soup = BeautifulSoup(html, "html.parser")
+def extract_inline_scripts(soup):
     inline_scripts = []
 
     for script in soup.find_all("script", src=False):
@@ -81,8 +87,7 @@ def extract_inline_scripts(html):
     return inline_scripts
 
 
-def extract_meta_generator(html):
-    soup = BeautifulSoup(html, "html.parser")
+def extract_meta_generator(soup):
     generator_tag = soup.find("meta", attrs={"name": "generator"})
 
     if generator_tag is None:
@@ -92,9 +97,7 @@ def extract_meta_generator(html):
     return generator or None
 
 
-def extract_internal_links(html, page_url):
-    soup = BeautifulSoup(html, "html.parser")
-    base_url = _document_base_url(soup, page_url)
+def extract_internal_links(soup, base_url, page_url):
     page = urlsplit(page_url)
     seen_paths = {"", page.path.rstrip("/")}
     preferred_links = [[] for _ in PREFERRED_LINK_PARTS]

@@ -3,8 +3,9 @@ from collections import Counter
 from urllib.parse import urlsplit
 
 
-from redaction import redact_keys
-from tech import added_technology_names, detect_result, detect_tech, linked_technology_additions
+from .paths import RESULTS_PATH
+from .redaction import redact_keys
+from .tech import added_technology_names, detect_result, detect_tech, linked_technology_additions
 
 
 def show_script_top(results, limit=20):
@@ -227,7 +228,7 @@ def print_findings(label, technologies):
 
 
 def main():
-    with open("results.json", encoding="utf-8") as file:
+    with RESULTS_PATH.open(encoding="utf-8") as file:
         saved_results = json.load(file)
 
     results = redact_keys(saved_results)
@@ -247,7 +248,7 @@ def main():
                 print_findings(page["final_url"], page["technologies"])
 
     if updated_count or redacted:
-        with open("results.json", "w", encoding="utf-8") as file:
+        with RESULTS_PATH.open("w", encoding="utf-8") as file:
             json.dump(results, file, indent=2, ensure_ascii=False)
 
     print(f"\nUpdated {updated_count} domains.")

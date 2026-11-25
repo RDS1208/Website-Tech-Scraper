@@ -24,6 +24,7 @@ dist/
 .aws/
 
 # Generated output and temporary files
+/results.json
 *.log
 *.tmp
 *.bak

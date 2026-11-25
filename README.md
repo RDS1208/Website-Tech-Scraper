@@ -1,77 +1,109 @@
 # Website Tech Scraper
 
-Requires Python 3.10+, internet access, and a Parquet file with a `root_domain` column (such as `domains.parquet`). Run from the project directory:
+Detects technologies on public websites and saves the evidence for each match. It also identifies Shopify stores and reports the tracking products found on their pages.
+
+## Stack
+
+| Technology | Role |
+| --- | --- |
+| Python and `asyncio` | Run concurrent crawls and limit active HTTP requests. |
+| HTTPX | Fetch homepages and internal pages and collect selected response headers. |
+| Beautiful Soup | Extract scripts, stylesheets, generator metadata, and links from HTML. |
+| Playwright and Chromium | Render homepages and observe resources and `fetch` or XHR activity. |
+| PyArrow | Read the `root_domain` column from the input Parquet file. |
+
+Detection rules live in [rules/rules.json](rules/rules.json). Each match stores its source and value, such as a script URL or a network endpoint.
+
+## Run the project
+
+Use Python 3.10 or later. Run the commands from the repository root. Install Chromium if you plan to use `--render`.
 
 ```sh
 python -m pip install -r requirements.txt
-python main.py domains.parquet
-```
-
-Fetches up to 10 domains concurrently. Extracts script URLs, generator metadata, and inline JavaScript as text, then matches them against `rules.json` to identify technologies. Saves the collected signals, findings, and request errors to `results.json` in input order.
-
-For domains supplied without a scheme, the crawler tries HTTPS after certain HTTP errors, including `403`, `404`, and `409`. Failed requests record the exception type and, when available, the failed URL and `Retry-After` header.
-
-Press **Ctrl+C** during the crawl to save completed results in `results.partial.tmp`. Run `python main.py domains.parquet -resume` to continue with the remaining domains. A complete crawl saves the full results to `results.json` and clears the temporary file.
-
-Use `--render` to collect additional signals with Chromium after each successful HTTPX fetch. The crawler renders up to two pages concurrently. Browser failures are recorded in `render_error` alongside the HTTPX results.
-
-Chromium also collects destinations of `fetch` and XHR requests in `network_urls`. These entries contain the scheme, hostname, and path. A `network_url` rule matches the hostname and path, and the analyzer ranks both observed endpoints and endpoints that still need a rule.
-
-```sh
 python -m playwright install chromium
-python main.py domains.parquet --render
-python main.py domains.parquet --render -resume
 ```
 
-Use `--follow-links` to visit up to three internal pages linked from each homepage. The crawler prefers a mix of product, collection, and contact pages and follows secondary redirects only on the same hostname. Secondary pages use HTTPX. If both flags are enabled, Chromium renders the homepage.
+Crawl the supplied domains with homepage rendering and internal links enabled.
 
 ```sh
-python main.py domains.parquet --follow-links
-python main.py domains.parquet --render --follow-links
-python main.py domains.parquet --render --follow-links --resume
+python -m scripts.main domains.parquet --render --follow-links
 ```
 
-Resume with the same flags as the interrupted run. The crawler prints the number of internal pages accessed and how many detections they added. The output stores each visited page and its evidence in `linked_pages`. The `linked_added_technologies` field lists names absent from the homepage findings. `analyze_res.py` recalculates this comparison, and `report.py` includes the linked findings once per domain.
+| Flag | Effect |
+| --- | --- |
+| `--render` | Renders each accessible homepage in Chromium to collect JavaScript and network signals. |
+| `--follow-links` | Fetches up to four internal pages per domain with HTTPX. |
+| `--resume` | Continues from the checkpoint written on Ctrl+C. Use the same input and crawl flags. |
+| `--shopify` | Selects the Shopify competitor report in `scripts.report`. |
 
-The crawler also collects linked stylesheet URLs and final-response headers named in `rules.json`. A `css_url` rule uses the same hostname and path filters as script URLs. A `header` rule pairs a header name with a `header_product`, such as `Server` and `nginx`.
+A completed crawl writes [results/results.json](results/results.json). You can inspect the included results immediately.
 
-Run `python analyze_res.py` to reapply the rules to the saved results and review the most common signals. Run `python report.py` to list technologies by the number of domains where they were found. A new crawl is needed to collect signals that are missing from the saved results.
+```sh
+python -m scripts.analyze_res
+python -m scripts.report
+python -m scripts.report --shopify
+python -m unittest discover -s scripts/tests -v
+```
+
+The analyzer reapplies the rules to saved signals. The default report groups the leaderboard by category. The Shopify report shows the page URL and evidence for each competitor match.
 
 ## Saved crawl results
-
-Each input domain has an entry in [results.json](results.json), including domains that returned an error.
 
 | Metric | Count |
 | --- | ---: |
 | Input domains | 200 |
-| Homepages fetched successfully | 143 |
-| Domains with at least one technology detected | 140 |
-| Distinct technology names across homepages and internal pages | **290** |
-| Domain–technology pairs with evidence | **1,220** |
-| Successful Playwright homepage comparisons | 143 |
-| Additional homepage pairs found only after rendering | 170 across 71 domains |
-| Pairs with fetch or XHR evidence | 103 across 61 domains |
-| Pairs identified solely by fetch or XHR evidence | 17 across 16 domains |
-| Internal pages fetched successfully | 321 of 339 attempted |
-| Additional pairs found only on internal pages | 42 across 25 domains |
-| Domains identified as Shopify stores | 2 |
+| Accessible homepages | 143 of 200 (71.5%) |
+| Domains with at least one detection | 140 |
+| Distinct technologies and components | **301** |
+| Domain–technology matches with evidence | 1,221 |
+| Internal pages fetched successfully | 414 of 441 |
+| Additional homepage matches from Chromium | 149 across 68 domains |
+| Additional matches from internal pages | 52 across 31 domains |
+| Shopify stores detected | 2 |
+| Shopify stores with a tracked competitor detected | 0 |
 
-## Shopify analytics validation
+A separate live check on `gld.com` detected Northbeam and Elevar and returned the scripts that triggered both matches.
 
-The saved crawl produced zero matches for these four products. Separate homepage crawls tested the rules on stores with documented or captured signals. The table lists the evidence returned by those checks.
+### Detection example
 
-| Product | Store tested | Evidence returned by the crawler | Where it appeared |
-| --- | --- | --- | --- |
-| Northbeam | `gld.com` | `j.northbeam.io/vendor/nb-sp.min.js` and the loader under `/ota-sp/` | Playwright script URLs. [Network capture](https://whogetsmydata.com/scan/142533) |
-| Triple Whale | `bedjet.com` | `window.TriplePixelData` | Inline JavaScript in the HTTPX response. [Vendor case study](https://www.triplewhale.com/case-studies/bedjet) |
-| Elevar | `comfrt.com` | Reference to `shopify-gtm-suite.getelevar.com/configs/…/config.js` | Inline JavaScript in the HTTPX response. [Network capture](https://whogetsmydata.com/scan/208138) |
-| Elevar | `brighton.com` | Elevar's `config.js` and `dl-web-pixel.js` under the vendor hostname | Playwright script URLs. [Network capture](https://whogetsmydata.com/scan/204644) |
-| Littledata | `olly.com`, `cellucor.com` | `LittledataLayer` | Inline JavaScript in the HTTPX response. [OLLY network capture](https://whogetsmydata.com/website/olly.com) · [Littledata integration documentation](https://www.twilio.com/docs/segment/connections/sources/catalog/libraries/website/shopify-littledata) |
+On `herbalwise.ie`, the crawler found the script `/cdn/shop/t/3/assets/global.js`. Its path starts with `/cdn/shop/t/`, the prefix used by the Shopify theme asset rule. The crawler reported Shopify and saved the script URL alongside the match so the detection can be checked. [Detection rules](rules/rules.json) · [Saved evidence](results/results.json)
 
-To reproduce a single store check without replacing the benchmark file, call the crawler directly. Replace the domain and product name to check another row.
+### Top 10 technologies and components
 
-```sh
-python -c "import asyncio; from main import crawl_domains; result = asyncio.run(crawl_domains(['gld.com'], render=True))[0]; print(result.get('error') or result.get('render_error') or [t for t in result['technologies'] if t['name'] == 'Northbeam'])"
-```
+Counts come from `python -m scripts.report`. A technology counts once per domain, even when it appears on several pages.
 
-These checks show which integrations leave visible evidence on a public homepage. Coverage can vary with the store's configuration, consent, and integrations that run only at checkout or on the server.
+| Rank | Technology | Websites |
+| ---: | --- | ---: |
+| 1 | jQuery | 69 |
+| 2 | Google Fonts | 62 |
+| 3 | WordPress | 57 |
+| 4 | jQuery Migrate | 46 |
+| 5 | Google Analytics | 44 |
+| 6 | Google tag | 44 |
+| 7 | Cloudflare | 39 |
+| 8 | Apache HTTP Server | 37 |
+| 9 | WordPress Hooks | 27 |
+| 10 | WordPress i18n | 27 |
+
+### Performance
+
+The extractor used to build a Beautiful Soup tree for each type of signal. It now builds one tree per HTML document and shares it across the extractors, including the internal link extractor when enabled.
+
+| Benchmark | Separate trees | Shared tree | Time saved |
+| --- | ---: | ---: | ---: |
+| Extraction on the same 354 documents | 21.20 s | 5.48 s | 74.1% |
+| Live crawl of the first 100 input domains with `--render --follow-links` | 184.95 s | 176.47 s | 4.6% |
+
+Both versions returned identical signals and links for all 354 documents in the extraction benchmark. The live figures cover one run per version and include network and Chromium time. Both runs accessed 70 homepages. The first reached 212 internal pages and the second reached 214.
+
+## Limitations and future work
+
+The crawler measures what is visible on the pages it visits. Some tools load after consent, during checkout, or on the server, so a crawl can miss them. The output keeps an error entry for each inaccessible domain, making the coverage visible.
+
+One bottleneck was the documentation research behind new rules. The crawler can list an unfamiliar script in seconds, but a filename such as `global.js` can appear in many products. Checking vendor documentation or public source code takes time and helps identify which part of the URL actually distinguishes the product.
+
+**Scaling.** To crawl 3 million domains in 30–60 days, I would target an average of 0.58–1.16 completed domains per second. I would read domains in batches and use two bounded queues. HTTPX workers would fetch homepages and internal links under per-host limits. Chromium workers would render selected homepages while HTTPX continues fetching. Once all tasks for a domain finish, I would save its result in a batch and use those saved records to resume after an interruption.
+
+I would size each worker pool from a representative run by multiplying its target tasks per second by its average seconds per task. If the render queue kept growing while HTTPX kept up, I would add Chromium workers as memory allowed. I would also test a shorter browser wait or navigation timeout on the same sample and compare both runtime and detections before changing the defaults. [Python queues](https://docs.python.org/3/library/asyncio-queue.html) · [Playwright navigation](https://playwright.dev/python/docs/api/class-page#page-goto)
+
+**Discovering technologies.** Extend the analyzer's candidate list to cover unmatched scripts, CSS, metadata, headers, and network URLs from saved pages. Group recurring signatures, verify each signature with vendor documentation or a public example, and add a specific rule. Rerun `scripts.analyze_res` to apply it to the saved crawl.

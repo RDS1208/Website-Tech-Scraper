@@ -4,12 +4,7 @@ from urllib.parse import urlsplit
 
 from playwright.async_api import Error, async_playwright
 
-from extractor import (
-    extract_css_urls,
-    extract_inline_scripts,
-    extract_meta_generator,
-    extract_script_urls,
-)
+from .extractor import extract_page
 
 
 async def render_page(browser, url):
@@ -45,8 +40,9 @@ async def render_page(browser, url):
         await asyncio.sleep(3)
         html = await page.content()
         final_url = page.url
-        resource_urls["script"].update(extract_script_urls(html, final_url))
-        resource_urls["stylesheet"].update(extract_css_urls(html, final_url))
+        signals, _ = extract_page(html, final_url)
+        resource_urls["script"].update(signals["script_urls"])
+        resource_urls["stylesheet"].update(signals["css_urls"])
 
         return {
             "final_url": final_url,
@@ -54,8 +50,8 @@ async def render_page(browser, url):
             "script_urls": sorted(resource_urls["script"]),
             "css_urls": sorted(resource_urls["stylesheet"]),
             "network_urls": sorted(network_urls),
-            "inline_scripts": extract_inline_scripts(html),
-            "meta_generator": extract_meta_generator(html),
+            "inline_scripts": signals["inline_scripts"],
+            "meta_generator": signals["meta_generator"],
         }
     finally:
         await context.close()
@@ -65,7 +61,7 @@ async def render_page(browser, url):
 async def open_renderer():
     semaphore = asyncio.Semaphore(2)
     async with async_playwright() as playwright:
-        browser = await playwright.chromium.launch(headless=False)
+        browser = await playwright.chromium.launch(headless=True)
         try:
             async def render(url):
                 async with semaphore:
