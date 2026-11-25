@@ -1,4 +1,5 @@
 import json
+import logging
 from urllib.parse import parse_qs, urlsplit
 
 from .paths import RULES_PATH
@@ -13,47 +14,67 @@ def _is_nonempty_string(value):
     return isinstance(value, str) and bool(value.strip())
 
 
-def _valid_url_fields(fields):
-    if not isinstance(fields, dict) or not fields or fields.keys() - URL_FIELDS:
-        return False
+def _url_rule_error(fields):
+    if not isinstance(fields, dict) or not fields:
+        return "expected at least one URL condition"
 
     for key, value in fields.items():
+        if key not in URL_FIELDS:
+            return f"unexpected field {key!r} in URL conditions"
         if key == "paths":
-            if not isinstance(value, list) or not value:
-                return False
-            if not all(_is_nonempty_string(path) for path in value):
-                return False
+            if not isinstance(value, list) or not value or not all(_is_nonempty_string(p) for p in value):
+                return "paths must be a nonempty list of nonempty strings"
         elif key == "query_param_prefix":
             if not isinstance(value, dict) or not value:
-                return False
+                return "query_param_prefix must be a nonempty object"
             for param, prefix in value.items():
                 if not _is_nonempty_string(param) or not _is_nonempty_string(prefix):
-                    return False
+                    return "query parameter names and prefixes must be nonempty strings"
         elif not _is_nonempty_string(value):
-            return False
+            return f"{key} must be a nonempty string"
 
-    return True
+    return None
+
+
+def _rule_error(rule):
+    if not isinstance(rule, dict):
+        return "expected a rule object"
+    if not _is_nonempty_string(rule.get("name")):
+        return "name must be a nonempty string"
+
+    fields = {key: value for key, value in rule.items() if key != "name"}
+    if not fields:
+        return "missing detection condition"
+    for key in ("css_url", "network_url"):
+        if key in fields:
+            if len(fields) != 1:
+                return f"{key} must be the only detection condition"
+            error = _url_rule_error(fields[key])
+            if error:
+                return f"{key}: {error}"
+            if key == "network_url" and "query_param_prefix" in fields[key]:
+                return "network_url does not support query_param_prefix"
+            return None
+
+    for required in TEXT_RULE_FIELDS:
+        if required.intersection(fields):
+            if fields.keys() != required:
+                return "expected exactly these detection fields: " + ", ".join(sorted(required))
+            for key, value in fields.items():
+                if not _is_nonempty_string(value):
+                    return f"{key} must be a nonempty string"
+            return None
+    return _url_rule_error(fields)
 
 
 def validate_rules(rules):
     valid_rules = []
-
-    for rule in rules:
-        if not isinstance(rule, dict) or not _is_nonempty_string(rule.get("name")):
-            continue
-
-        fields = {key: value for key, value in rule.items() if key != "name"}
-        if fields.keys() == {"css_url"}:
-            valid = _valid_url_fields(fields["css_url"])
-        elif fields.keys() == {"network_url"}:
-            network_rule = fields["network_url"]
-            valid = _valid_url_fields(network_rule) and "query_param_prefix" not in network_rule
-        elif fields.keys() in TEXT_RULE_FIELDS:
-            valid = all(_is_nonempty_string(value) for value in fields.values())
+    for number, rule in enumerate(rules, start=1):
+        error = _rule_error(rule)
+        if error:
+            name = rule.get("name") if isinstance(rule, dict) else None
+            logging.getLogger(__name__).warning("Skipping rule %d (%r): %s", number, name, error)
         else:
-            valid = _valid_url_fields(fields)
-
-        if valid:
             valid_rules.append(rule)
 
     return valid_rules

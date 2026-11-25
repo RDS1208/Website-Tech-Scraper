@@ -62,11 +62,38 @@ The analyzer reapplies the rules to saved signals. The default report groups the
 | Shopify stores detected | 2 |
 | Shopify stores with a tracked competitor detected | 0 |
 
-A separate live check on `gld.com` detected Northbeam and Elevar and returned the scripts that triggered both matches.
-
 ### Detection example
 
 On `herbalwise.ie`, the crawler found the script `/cdn/shop/t/3/assets/global.js`. Its path starts with `/cdn/shop/t/`, the prefix used by the Shopify theme asset rule. The crawler reported Shopify and saved the script URL alongside the match so the detection can be checked. [Detection rules](rules/rules.json) · [Saved evidence](results/results.json)
+
+### Single-site Shopify report
+
+Run this example in PowerShell from the repository root with the project environment active. It crawls `gld.com` and passes the results to the same report used by `--shopify`. The report checks for Shopify and lists tracked competitors with their page URLs and evidence. The single-site results are stored in a temporary directory.
+
+```powershell
+@'
+import asyncio
+from pathlib import Path
+from tempfile import TemporaryDirectory
+from scripts.main import crawl_domains, save_json
+from scripts.report import generate_shopify_report
+
+results = asyncio.run(crawl_domains(["https://gld.com/"], render=True, follow_links=True))
+if "error" in results[0]:
+    raise SystemExit(results[0]["error"])
+with TemporaryDirectory() as directory:
+    path = Path(directory) / "results.json"
+    save_json(path, results)
+    generate_shopify_report(path)
+'@ | python -
+```
+
+On November 26, 2026, the rendered crawl of `gld.com` returned these examples of script evidence. This was a separate run from the 200-domain dataset.
+
+| Technology | Observed script URL |
+| --- | --- |
+| Northbeam | `https://j.northbeam.io/vendor/nb-sp.min.js` |
+| Elevar | `https://shopify-gtm-suite.getelevar.com/getelevar/3.40.0/dl-web-pixel.js` |
 
 ### Top 10 technologies and components
 
